@@ -11,6 +11,6 @@ python -m unittest -q
 python -m uvicorn advisor:app --host 127.0.0.1 --port 8766
 ```
 
-## Проверки и развёртывание
+## Ручное развёртывание
 
-GitHub Actions запускает тесты API, браузерный сценарий и сборку образов. Развёртывание на существующую ВМ через GitLab и Spirit настраивается отдельно. [Настройка, проверки и откат](advisor/docs/gitlab-deploy.md).
+В каталоге `advisor/` находятся Dockerfile для бэкенда и фронтенда, конфигурация Compose и проверка запущенной версии. [Проверки и откат на ВМ](advisor/docs/gitlab-deploy.md).
