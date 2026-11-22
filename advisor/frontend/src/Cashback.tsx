@@ -120,8 +120,8 @@ export function MonthCashback({ month = monthAt() }: { month?: string }) {
               <span className="vals">{money(card.cashbackKopecks)} по расчёту{card.actualCashbackKopecks === null ? '' : ` · ${money(card.actualCashbackKopecks)} подтверждено (${card.actualCashbackCount})`}</span>
             </li>)}
           </ul></details>}
-        </> : <p className="month-cashback-meta">Покупок в этом месяце пока нет. <a href="#buy">Рассчитать покупку</a></p>}
-        <button type="button" className="month-cashback-journal" onClick={() => { keepHistoryMonth(data.month); location.hash = 'history'; }}>Покупки за месяц</button>
+        </> : <div className="month-cashback-empty"><p className="month-cashback-meta">Покупок в этом месяце пока нет.</p><button type="button" className="month-cashback-action" onClick={() => { location.hash = 'buy'; }}>Рассчитать покупку</button></div>}
+        {data.count > 0 && <button type="button" className="month-cashback-journal" onClick={() => { keepHistoryMonth(data.month); location.hash = 'history'; }}>Покупки за месяц</button>}
       </>}
     </div>
   </section>;

@@ -485,6 +485,11 @@ export default function Wallet({ onEdit }: WalletProps = {}) {
   const [limitsRevision, setLimitsRevision] = useState(0);
   const [loadError, setLoadError] = useState('');
   const [notice, setNotice] = useState('');
+  useEffect(() => {
+    if (!notice) return;
+    const timer = window.setTimeout(() => setNotice(''), 3000);
+    return () => window.clearTimeout(timer);
+  }, [notice]);
   const [dialog, setDialog] = useState<'add' | 'settings' | 'delete' | null>(null);
   const [backToSettings, setBackToSettings] = useState(false);
   const titleId = useId();
@@ -529,7 +534,7 @@ export default function Wallet({ onEdit }: WalletProps = {}) {
   const askDelete = (fromSettings: boolean) => { setBackToSettings(fromSettings); setDialog('delete'); };
   const removed = () => {
     if (!card) return;
-    setSelectedId(cards[index + 1]?.cardId ?? cards.find(item => item.cardId !== card.cardId)?.cardId ?? null);
+    setSelectedId(cards[index + 1]?.cardId ?? cards[index - 1]?.cardId ?? null);
     setDeck(current => current && { ...current, cards: current.cards.filter(item => item.cardId !== card.cardId) });
     close(); setNotice('Карта удалена');
     requestAnimationFrame(() => title.current?.focus({ preventScroll: true }));
@@ -567,11 +572,11 @@ export default function Wallet({ onEdit }: WalletProps = {}) {
           <button type="button" className="kw-primary" onClick={() => card.rules.length ? setDialog('settings') : edit(card)}>
             {card.rules.length ? 'Настройки карты' : 'Добавить категории'}
           </button>
-          {!card.rules.length && <>
-            <p>Добавьте категории кэшбэка, чтобы сравнить эту карту с другими.</p>
-            <button type="button" onClick={() => setDialog('settings')}>Настройки карты</button>
-            <button type="button" className="kw-delete" onClick={() => askDelete(false)}>Удалить карту</button>
-          </>}
+          {!card.rules.length && <button type="button" onClick={() => setDialog('settings')}>Настройки карты</button>}
+          {card.rules.length > 0 && <ul className="kw-rules">{card.rules.map((rule, i) => <li key={`${rule.categoryId}-${i}`}>
+            <div><strong>{ruleName(rule)}</strong><strong>{percent.format(rule.rateBps / 10_000)}</strong></div>
+          </li>)}</ul>}
+          <button type="button" className="kw-delete" onClick={() => askDelete(false)}>Удалить карту</button>
         </div>}
       </div>
     </div> : deck && <div className="kw-empty"><div aria-hidden="true" /><h2>Кошелёк пуст</h2><p>Добавьте карту, чтобы сравнить кэшбэк.</p></div>}

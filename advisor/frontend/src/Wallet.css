@@ -34,7 +34,7 @@
 .kw-details h2, .kw-empty h2 { margin: 0; letter-spacing: -.035em; }
 .kw-details p, .kw-empty p, .kw-dialog p { color: var(--kw-quiet); }
 .kw-card-actions { display: grid; align-content: start; gap: 8px; }
-.kw-wallet .kw-notice { margin-top: 12px; color: var(--kw-quiet); }
+.kw-wallet .kw-notice { position: fixed; z-index: 30; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom)); transform: translateX(-50%); margin: 0; padding: 8px 14px; border: 1px solid var(--kw-border); border-radius: 999px; background: var(--kw-paper); color: var(--kw-ink); box-shadow: 0 8px 24px rgba(0,0,0,.14); white-space: nowrap; pointer-events: none; }
 
 .kw-fan-area { min-width: 0; }
 .kw-fan {
