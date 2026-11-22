@@ -61,7 +61,14 @@
       showStep('decisionStep','Условия кэшбэка','bankId');
     }
   }
-  $('addCashbackBtn').addEventListener('click',e=>openDecision(e.currentTarget,{selectedCard:true}));
+  $('addCashbackBtn').addEventListener('click',e=>{
+    if(activeCard()?.rules?.length) openCardSettings(e.currentTarget);
+    else openDecision(e.currentTarget,{selectedCard:true});
+  });
+  $('editCardCategories').addEventListener('click',()=>{
+    closeCardSettings();
+    openDecision($('addCashbackBtn'),{selectedCard:true});
+  });
   $('bankId').onchange=()=>cardOptions();
   function chooseActive(){
     const bankId=$('bankId').value, cardId=$('cashbackCard').value;
@@ -347,12 +354,22 @@
     if(noSpend)host.append(action('Ввести расходы',()=>{$('spendingSource').value='manual';switchSource();$('spendRows').querySelector('input')?.focus();}));
     title.focus();
   }
+  let lastPlan;
   $('planForm').onsubmit=async e=>{e.preventDefault(); if($('calculatePlan').disabled)return;invalidatePlan();const token=planEpoch;
     try{const body={month:$('planMonth').value,spendingMonth:$('spendingMonth').value || monthAt(0)};
       if($('spendingSource').value==='manual'){body.spending=[];for(const r of $('spendRows').children){const cat=r.querySelector('[data-key=categoryId]'),amt=r.querySelector('[data-key=amount]');if(!cat.value.trim() && !amt.value.trim())continue;
         if(!cat.value.trim())throw new Error('Введите категорию покупки.');const amountKopecks=hundredths(amt.value,undefined,'Сумма');if(!amountKopecks)throw new Error('Сумма должна быть больше нуля.');const value=cat.value.trim(),cid=Object.keys(categories).find(k=>categories[k].toLowerCase()===value.toLowerCase()) || value;body.spending.push({categoryId:cid,amountKopecks});}
         if(!body.spending.length)throw new Error('Введите хотя бы одну покупку.');}
-      $('calculatePlan').disabled=true; $('planResult').textContent='Сравниваем предложения банков…';const data=await post('cashback-plan',body,45000); if(token===planEpoch)showPlan(data,body);
+      const key=JSON.stringify(body), version=walletDataVersion;
+      if(lastPlan?.key===key && lastPlan.version===version && Date.now()-lastPlan.time<30_000){showPlan(lastPlan.data,body);return;}
+      $('calculatePlan').disabled=true; $('planResult').textContent='Сравниваем предложения банков…';
+      const data=await post('cashback-plan',body,45000);
+      if(token===planEpoch && version===walletDataVersion){
+        if(!(data.warnings||[]).some(w=>w.startsWith('Нет расходов')||w.startsWith('Нет подтверждённых условий')))
+          lastPlan={key,version,time:Date.now(),data};
+        showPlan(data,body);
+      }
+      else if(token===planEpoch) $('planResult').textContent='Данные изменились. Рассчитайте план ещё раз.';
     }catch(err){if(token===planEpoch){$('planResult').replaceChildren();fail(err,$('planError'));}}finally{if(token===planEpoch)$('calculatePlan').disabled=false;}
   };
   window.openCashbackDecision=trigger=>openDecision(trigger);

@@ -22,7 +22,7 @@
     #planResult h3{margin:16px 0 4px}#planResult p{margin:8px 0 0}
   </style>
   <link rel="stylesheet" href="/static/tokens.css?v=17">
-  <link rel="stylesheet" href="/static/wallet-shell.css?v=ui21">
+  <link rel="stylesheet" href="/static/wallet-shell.css?v=ui23">
   <link rel="stylesheet" href="/static/checkout.css?v=17">
   <link rel="stylesheet" href="/static/planner.css?v=18">
   <link rel="stylesheet" href="/static/type.css?v=18">
@@ -37,7 +37,7 @@
     <header class="topbar">
       <button id="brandHome" type="button" class="brand" aria-label="КопиКэш, на главную">
         <img class="brand-logo" src="/static/kopicash-logo.png" width="34" height="34" alt="" decoding="async">
-        <span class="brand-name">КопиКэш<span class="brand-home-label" id="brandHomeLabel" hidden>На главную</span></span>
+        <span class="brand-name">КопиКэш</span>
       </button>
       <div class="topbar-actions">
         <button class="icon-btn" id="themeToggle" type="button" aria-label="Тёмная тема" aria-pressed="false"><svg class="theme-moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.9 13.3a9 9 0 1 1-10.2-10.2 7 7 0 0 0 10.2 10.2Z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg></button>
@@ -107,29 +107,11 @@
           <button class="icon-btn carousel-arrow" id="nextCard" type="button" aria-label="Следующая карта"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
         </div>
         <div class="card-actions" id="cardActions" hidden>
-          <button type="button" id="addCashbackBtn" class="card-cashback-btn">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-5L3 9m0-5v5h5m-4 4a8 8 0 0 0 14 5l3-3m0 5v-5h-5"/></svg>
-            <span id="addCashbackLabel">Добавить категории</span>
-          </button>
-          <details class="card-settings" id="cardSettings">
-            <summary>Настройки карты <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="card-settings-options">
-              <button type="button" id="makeUsualBtn" aria-pressed="false">Сравнивать с этой картой</button>
-              <p id="usualCardHelp">В статистике увидите, сколько вернулось бы, если бы вы оплатили этой картой.</p>
-              <button type="button" id="deleteActiveBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"/></svg>
-                Удалить карту
-              </button>
-            </div>
-          </details>
+          <button type="button" id="addCashbackBtn" class="card-cashback-btn"><span id="addCashbackLabel">Добавить категории</span></button>
+          <button type="button" class="delete-card-action" id="deleteEmptyCard">Удалить карту</button>
         </div>
         <div class="card-carousel-details" id="carouselDetails" hidden>
           <div id="carouselSummary"></div>
-          <details class="card-limits" id="cardLimits">
-            <summary>Лимиты кэшбэка на месяц</summary>
-            <div id="cardLimitsBody"></div>
-          </details>
-          <ul id="carouselCategories" class="carousel-categories" hidden></ul>
           <p id="carouselEmptyHint" class="carousel-empty-hint" hidden>Добавьте категории кэшбэка, чтобы сравнить эту карту с другими.</p>
         </div>
       </section>
@@ -192,15 +174,28 @@
   </main>
   <div class="dialog cashback-dialog" id="catalogDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" hidden aria-busy="false"><div class="dialog-busy" id="catalogBusy" hidden aria-live="polite"><span class="ui-spinner" aria-hidden="true"></span></div><div class="dialog-card"><div class="dialog-head"><h2 id="dialogTitle">Условия кэшбэка</h2><button class="close" id="closeCatalog" type="button" aria-label="Закрыть">×</button></div>
     <div class="shot-form" id="decisionStep"><label>Банк<select id="bankId" required></select></label><label id="cashbackCardField" hidden>Карта<select id="cashbackCard"></select></label><h3>Вы уже выбрали категории в банке?</h3><button id="chooseActive" type="button">Да — добавить подключённые</button></div>
-    <form class="shot-form shot-upload" id="screenshotForm" hidden><p class="shot-upload-lead" id="shotUploadLead">Прикрепите категории кэшбэка</p><p class="cb-note" id="entryContext" hidden tabindex="-1"></p><label class="shot-drop"><input id="cashbackShot" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Снимок из галереи"><span id="shotPreview">Снимок из банка · JPG, PNG или WebP</span></label><p class="cb-note" id="shotPrivacy">При распознавании снимок целиком отправится в AITunnel. Обрежьте имя, баланс и другие личные данные перед загрузкой.</p><button class="confirm" id="confirmCard" type="submit" hidden>Отправить на распознавание</button><button id="enterCashbackManually" type="button">Ввести вручную</button></form>
+    <form class="shot-form shot-upload" id="screenshotForm" hidden><p class="shot-upload-lead" id="shotUploadLead">Прикрепите категории кэшбэка</p><p class="cb-note" id="entryContext" hidden tabindex="-1"></p><label class="shot-drop"><input id="cashbackShot" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Снимок из галереи"><span id="shotPreview">Снимок из банка · JPG, PNG или WebP</span></label><p class="cb-note" id="shotPrivacy">Снимок целиком отправится на распознавание. Обрежьте имя, баланс и другие личные данные перед загрузкой.</p><button class="confirm" id="confirmCard" type="submit" hidden>Отправить на распознавание</button><button id="enterCashbackManually" type="button">Ввести вручную</button></form>
     <form class="shot-form review-form" id="reviewForm" hidden><p class="review-bank" id="reviewContext"></p><p class="cb-note" id="reviewHint"></p><p class="cb-warning" id="reviewWarnings" role="status" hidden></p><div class="review-month"><span class="review-month-label" id="reviewMonthLabel">Месяц действия</span><p class="review-month-text" id="reviewMonthText">Выберите месяц</p><input type="month" id="reviewMonth" required aria-labelledby="reviewMonthLabel"></div><div id="reviewRows" class="review-rows"></div><button type="button" id="addRule" class="text-action">Добавить строку</button><div class="review-footer"><p class="review-count" id="reviewCount" aria-live="polite">Выбрано: 0</p><p class="review-need" id="reviewNeed" role="status"></p><button type="submit" class="confirm" id="saveReview">Сохранить категории</button></div></form><p id="shotError" class="auth-error" role="alert"></p>
   </div></div>
   <div class="dialog cashback-dialog" id="planDialog" role="dialog" aria-modal="true" aria-labelledby="planTitle" hidden><div class="dialog-card"><div class="dialog-head"><h2 id="planTitle">План кэшбэка</h2><button class="close" id="closePlan" aria-label="Закрыть" type="button">×</button></div><form id="planForm" class="shot-form"><p class="cb-note">Сравните, какие категории подключить в каждом банке. План ничего не меняет в кошельке.</p><label>Месяц выбора<input id="planMonth" type="hidden"><span id="planMonthText" aria-live="polite"></span></label><div class="cb-months"><button type="button" id="planCurrent">Этот месяц</button><button type="button" id="planNext">Следующий месяц</button></div><label>Траты для прогноза<select id="spendingSource"><option value="history">Из истории покупок</option><option value="manual">Ввести суммы по категориям</option></select></label><label id="spendingPeriod">Месяц покупок<input id="spendingMonth" type="month" required></label><div id="spendingInputs" hidden></div><button class="confirm" id="calculatePlan" type="submit">Сравнить варианты</button></form><div id="planResult" aria-live="polite"></div><p id="planError" class="auth-error" role="alert"></p></div></div>
   <div class="dialog" id="addDialog" role="dialog" aria-modal="true" aria-labelledby="addTitle" hidden><div class="dialog-card"><div class="dialog-head"><h2 id="addTitle">Добавить карту</h2><button class="close" id="closeAdd" type="button" aria-label="Закрыть">×</button></div><div id="addRoutes" class="add-routes"><button type="button" id="addRouteBank">Выбрать банк</button><button type="button" id="addRouteShot"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="13" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg> Импортировать со скриншота</button></div><form id="addCardForm" class="shot-form" hidden><p class="cb-note" id="addSelectedBank" hidden></p><label class="add-source-legacy" hidden>Источник<select id="addSource"><option value="bank">Мой банк</option><option value="catalog">Учебный каталог</option></select></label><label for="bankSearch" id="searchLabel">Найти банк</label><input id="bankSearch" role="combobox" type="search" autocomplete="off" placeholder="Название банка" aria-autocomplete="list" aria-controls="bankSuggestions" aria-expanded="false"><div id="bankSuggestions" class="suggest bank-list" role="listbox" hidden></div><label for="newBank" id="bankSelectLabel">Банк</label><select id="newBank" required></select><p id="addStatus" class="cb-note" role="status"></p><button id="retryAdd" type="button" hidden>Повторить загрузку</button><button type="button" class="text-action" id="openCatalogSource">Учебный каталог</button><button class="confirm" id="saveNewCard" type="submit">Добавить карту</button></form></div></div>
+  <div class="dialog" id="cardSettingsDialog" role="dialog" aria-modal="true" aria-labelledby="cardSettingsTitle" hidden>
+    <div class="dialog-card">
+      <div class="dialog-head"><h2 id="cardSettingsTitle">Настройки карты</h2><button type="button" class="close" id="closeCardSettings" aria-label="Закрыть">×</button></div>
+      <p id="cardSettingsBank"></p>
+      <ul id="carouselCategories" class="carousel-categories" hidden></ul>
+      <button type="button" id="editCardCategories" class="confirm">Обновить категории</button>
+      <section class="card-limits" id="cardLimits" aria-labelledby="cardLimitsTitle">
+        <h3 id="cardLimitsTitle">Лимиты кэшбэка на месяц</h3>
+        <div id="cardLimitsBody" aria-live="polite"></div>
+      </section>
+      <button type="button" class="delete-card-action" id="deleteActiveBtn">Удалить карту</button>
+    </div>
+  </div>
   <div class="dialog" id="deleteDialog" role="dialog" aria-modal="true" aria-labelledby="deleteTitle" aria-describedby="deleteDescription" hidden><div class="dialog-card"><h2 id="deleteTitle">Удалить карту?</h2><p id="deleteDescription"></p><div class="dialog-actions"><button type="button" class="cancel" id="cancelDelete">Отмена</button><button class="danger" type="button" id="confirmDelete">Удалить карту</button></div><p id="deleteStatus" role="alert"></p></div></div>
   <div class="dialog" id="discardDialog" role="dialog" aria-modal="true" aria-labelledby="discardTitle" hidden><div class="dialog-card"><div class="dialog-head"><h2 id="discardTitle">Выйти без сохранения?</h2></div><p id="discardDescription">Черновик условий будет удалён.</p><div class="dialog-actions"><button type="button" class="cancel" id="discardStay">Продолжить проверку</button><button type="button" class="confirm" id="discardLeave">Выйти без сохранения</button></div></div></div>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="/static/checkout.js?v=4"></script>
+  <script src="/static/checkout.js?v=5"></script>
   <script>
     const $=id=>document.getElementById(id);let catalog=[],saved=[],manual=[],banks=[],categories={supermarkets:'Супермаркеты',cafe:'Кафе',fuel:'АЗС'},loading=false,authMode='register',deviceLogin=null;
     function writeDevice(){if(deviceLogin)localStorage.setItem('advisor-login',deviceLogin)}
@@ -219,7 +214,7 @@
     async function apiPart(label,path,options,timeout){try{return await api(path,options,timeout)}catch(error){const detail=error?.message||'Не удалось выполнить запрос.';throw Object.assign(new Error(`${label}: ${detail}`),error)}}
     window.apiPart=apiPart;
     function formatRate(bps){const value=bps/100;return Number.isInteger(value)?String(value):String(Math.round(value*100)/100).replace('.',',')}
-    async function fillMeta(){const meta=await api('/api/meta');categories=meta.categories;banks=meta.banks;usualCardId=meta.usualCardId??null;const bank=$('bankId');if(!bank.options.length)for(const item of meta.banks){const option=document.createElement('option');option.value=item.id;option.textContent=item.name;bank.append(option)}const fresh=$('newBank');if(fresh&&!fresh.options.length)for(const item of meta.banks){const option=document.createElement('option');option.value=item.id;option.textContent=item.name;fresh.append(option)}}
+    async function fillMeta(){const meta=await api('/api/meta');categories=meta.categories;banks=meta.banks;const bank=$('bankId');if(!bank.options.length)for(const item of meta.banks){const option=document.createElement('option');option.value=item.id;option.textContent=item.name;bank.append(option)}const fresh=$('newBank');if(fresh&&!fresh.options.length)for(const item of meta.banks){const option=document.createElement('option');option.value=item.id;option.textContent=item.name;fresh.append(option)}}
     let shotImage='';
     function imageKind(bytes){if(bytes.length>3&&bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff)return 'image/jpeg';if(bytes.length>8&&bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47)return 'image/png';if(bytes.length>12&&bytes[0]===0x52&&bytes[1]===0x49&&bytes[2]===0x46&&bytes[3]===0x46&&bytes[8]===0x57&&bytes[9]===0x45&&bytes[10]===0x42&&bytes[11]===0x50)return 'image/webp';return ''}
     async function readShot(file){const copy=file.slice(0,file.size,file.type||'application/octet-stream');let bytes;try{bytes=new Uint8Array(await copy.arrayBuffer())}catch{const url=URL.createObjectURL(copy);try{bytes=new Uint8Array(await (await fetch(url)).arrayBuffer())}finally{URL.revokeObjectURL(url)}}if(bytes.length>4000000)throw new Error('Скриншот больше 4 МБ');const kind=imageKind(bytes);if(!kind)throw new Error('Нужен снимок JPG, PNG или WebP');let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return `data:${kind};base64,${btoa(binary)}`}
@@ -241,8 +236,8 @@
     for (const [name, read, write] of [['$',()=>$,null],['banks',()=>banks,value=>{banks=value}],['manual',()=>manual,value=>{manual=value}],['categories',()=>categories,value=>{categories=value}],['deviceLogin',()=>deviceLogin,value=>{deviceLogin=value}]]) Object.defineProperty(window,name,{get:read,set:write||(()=>{}),configurable:true});
     // wallet-shell starts authentication once navigation and dialogs are ready.
   </script>
-  <script src="/wallet-cashback.js?v=6"></script>
-  <script src="/static/carousel-fan.js?v=fan14"></script>
-  <script src="/static/wallet-shell.js?v=ui20"></script>
+  <script src="/wallet-cashback.js?v=7"></script>
+  <script src="/static/carousel-fan.js?v=fan15"></script>
+  <script src="/static/wallet-shell.js?v=ui23"></script>
 </body>
 </html>

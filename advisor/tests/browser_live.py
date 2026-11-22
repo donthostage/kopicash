@@ -41,7 +41,6 @@ def run(base, chromium=None):
             cards = page.locator('#cardsPanel')
             add = page.locator('#addDialog')
             button(cards, 'Добавить карту').click()
-            button(add, 'Выбрать банк').click()
             add.locator('#bankSearch').fill('ВТБ')
             add.locator('#bankSuggestions').get_by_role('option', name='ВТБ', exact=True).click()
             button(add, 'Добавить карту').click()

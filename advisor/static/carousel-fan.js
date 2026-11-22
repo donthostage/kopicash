@@ -279,6 +279,10 @@
         return;
       }
       if (carouselPos.all.length < 2) return;
+      if (card && !card.classList.contains('is-center')) {
+        animateCarousel(Number(card.dataset.index));
+        return;
+      }
       const active = event.target.closest('.carousel-card.is-center');
       if (active) {
         const rect = active.getBoundingClientRect();

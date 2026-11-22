@@ -59,6 +59,16 @@ class CashbackLimitsAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 422, response.text)
         self.assertEqual(self.read(), before)
 
+    def test_received_cannot_exceed_card_or_category_limit(self):
+        self.save()
+        before = self.read()
+        excessive = {'limitKopecks': 10_050, 'usedKopecks': 10_100}
+        for body in (dict(self.body, card=excessive),
+                     dict(self.body, categories=[dict(excessive, categoryId='cafe')])):
+            response = self.client.put(self.endpoint, json=body)
+            self.assertEqual(response.status_code, 422, response.text)
+            self.assertEqual(self.read(), before)
+
     def test_other_account_cannot_overwrite_saved_limits(self):
         self.save()
         before = self.read()

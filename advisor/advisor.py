@@ -617,6 +617,8 @@ def create_app(db_path, *, include_wallet=True):
         if any(value is not None and (type(value) is not int or not 0 <= value <= 10**12)
                for value in (cap, used)):
             raise ValueError('Проверьте суммы в рублях')
+        if cap is not None and used is not None and used > cap:
+            raise ValueError('Уже получено не может быть больше лимита')
         return cap, used
 
     @app.get('/api/me/cards/{card}/monthly')

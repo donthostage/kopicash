@@ -2,7 +2,6 @@
    Taiga UI patterns, adapted to this page: drawer (add/import/delete), combobox (bank search),
    accordion rows (history), button hierarchy and toast. */
 let walletPreferredCard = null, walletReturn = null, deleteTarget = null, addReturn = null, bankSuggest = -1, historyMonth = null;
-let usualCardId = null, usualCardBusy = false, renderedCardId = null;
 const shellRoutes = ['home', 'buy', 'cards', 'cashback', 'history', 'account'];
 const DEMO_DECK = [
   {cardId:'demo-sber', name:'Сбер', demo:true, paint:{color:'#21A038', ink:'#ffffff', accent:'#d8f5e0'}, rules:[{label:'Транспорт', categoryId:'transport', rateBps:1500},{label:'Кафе', categoryId:'cafe', rateBps:400},{label:'Все покупки', categoryId:'all', rateBps:100}]},
@@ -119,7 +118,8 @@ function renderWalletCardDetails(card){
   const host=$('carouselSummary'); if(!host) return; host.replaceChildren();
   const title=document.createElement('p');
   title.className='carousel-bank-title';
-  title.textContent=card.cardName||card.name;
+  title.innerHTML=carouselCardLogoMarkup(card);
+  title.append(document.createTextNode(card.cardName||card.name));
   host.append(title);
   if(card.demo){
     host.append(Object.assign(document.createElement('p'),{className:'carousel-demo-note',textContent:'Ставки демонстрационные'}));
@@ -158,15 +158,12 @@ function renderWalletCardDetails(card){
   const cashback=$('addCashbackBtn');
   if(cashback){
     cashback.hidden=false;
-    $('addCashbackLabel').textContent=rules.length?'Обновить категории':'Добавить категории';
+    $('addCashbackLabel').textContent=rules.length?'Настройки карты':'Добавить категории';
     cashback.disabled=!card;
   }
-  if($('cardActions')) $('cardActions').hidden=!card;
-  const currentCardId=card?.cardId??null;
-  if(renderedCardId!==currentCardId) $('cardSettings').open=false;
-  renderedCardId=currentCardId;
-  syncUsualCard(card);
-  if($('deleteActiveBtn')) $('deleteActiveBtn').disabled=!card;
+  $('deleteEmptyCard').hidden=Boolean(rules.length);
+  $('cardSettingsBank').textContent=card.cardName||card.name;
+  $('cardLimits').hidden=Boolean(card.demo);
 }
 const carouselPos={value:0,target:0,all:[]};
 const homeCarouselPos={value:0,target:0,all:[]};
@@ -176,16 +173,6 @@ const walletCarousel=createCardCarousel({
 const homeCarousel=createCardCarousel({
   root:$('homeCarousel'), track:$('homeCarouselTrack'), state:homeCarouselPos, onChange:updateHomeCarousel, onOpen:openHomeCard,
 });
-function syncUsualCard(card){
-  const button=$('makeUsualBtn');
-  const selected=!!card && usualCardId===card.cardId;
-  button.disabled=!card || usualCardBusy;
-  button.setAttribute('aria-pressed',String(selected));
-  button.setAttribute('aria-describedby','usualCardHelp');
-  $('usualCardHelp').textContent=selected
-    ?'Эта карта взята за основу для сравнения новых покупок.'
-    :'В статистике увидите, сколько вернулось бы, если бы вы оплатили этой картой.';
-}
 function activeCard(){ return walletCarousel.selected(); }
 let limitsCardId=null, limitsRequest=0;
 function renderCardLimits(card, endpoint, data, ticket){
@@ -220,6 +207,9 @@ function renderCardLimits(card, endpoint, data, ticket){
         if(!Number.isSafeInteger(amount)||amount>10**12) throw new Error('Сумма превышает допустимый максимум');
         return amount;
       });
+      const exceeds=limitKopecks!=null&&usedKopecks!=null&&usedKopecks>limitKopecks;
+      inputs[1].toggleAttribute('aria-invalid',exceeds);
+      if(exceeds){inputs[1].focus(); throw new Error('Уже получено не может быть больше лимита');}
       return {limitKopecks,usedKopecks};
     };
   }
@@ -245,6 +235,8 @@ function renderCardLimits(card, endpoint, data, ticket){
     try{
       const body={month:data.month,card:readCard(),categories:readCategories.map(read=>read())};
       const updated=await api(endpoint,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      invalidateWalletViews();
+      limitCache.set(endpoint,{data:updated,time:Date.now()});
       if(ticket===limitsRequest&&card.cardId===activeCard()?.cardId){
         renderCardLimits(card,endpoint,updated,ticket);
         host.querySelector('button').focus({preventScroll:true});
@@ -254,21 +246,40 @@ function renderCardLimits(card, endpoint, data, ticket){
     finally{save.disabled=false;}
   };
 }
-$('cardLimits').addEventListener('toggle',async()=>{
-  const ticket=++limitsRequest;
-  if(!$('cardLimits').open) return;
+const cardSettingsDialog=$('cardSettingsDialog');
+const limitCache=new Map();
+const limitEndpoint=card=>'/api/me/cards/'+encodeURIComponent(card.cardId)+'/cashback-limits';
+function getLimits(card){
+  const endpoint=limitEndpoint(card);
+  let cached=limitCache.get(endpoint);
+  if(!cached || (cached.data && Date.now()-cached.time>30_000)){
+    cached={};
+    cached.promise=api(endpoint).then(data=>{cached.data=data; cached.time=Date.now(); return data;},error=>{
+      if(limitCache.get(endpoint)===cached) limitCache.delete(endpoint);
+      throw error;
+    });
+    limitCache.set(endpoint,cached);
+  }
+  return cached;
+}
+function closeCardSettings(){ ++limitsRequest; closeDialog(cardSettingsDialog); }
+async function openCardSettings(source){
   const card=activeCard();
   if(!card) return;
+  const ticket=++limitsRequest;
+  openDialog(cardSettingsDialog,$('closeCardSettings'),source);
+  if(card.demo) return;
   const host=$('cardLimitsBody');
+  const endpoint=limitEndpoint(card);
+  const cached=getLimits(card);
+  if(cached.data){ renderCardLimits(card,endpoint,cached.data,ticket); return; }
   host.textContent='Загружаем лимиты…';
-  const endpoint='/api/me/cards/'+encodeURIComponent(card.cardId)+'/cashback-limits';
   try{
-    const data=await api(endpoint);
+    const data=await cached.promise;
     if(ticket===limitsRequest&&card.cardId===activeCard()?.cardId) renderCardLimits(card,endpoint,data,ticket);
-  }catch(error){
-    if(ticket===limitsRequest) host.textContent=error.message;
-  }
-});
+  }catch(error){ if(ticket===limitsRequest) host.textContent=error.message; }
+}
+$('closeCardSettings').addEventListener('click',closeCardSettings);
 function updateCarouselDetails(card){
   $('cardCarousel').hidden=!card;
   $('walletEmpty').hidden=Boolean(card);
@@ -277,10 +288,8 @@ function updateCarouselDetails(card){
   $('cardActions').hidden=!card;
   if(limitsCardId!==(card?.cardId??null)){
     limitsCardId=card?.cardId??null;
-    ++limitsRequest;
-    $('cardLimits').open=false;
+    if(!cardSettingsDialog.hidden) closeCardSettings();
   }
-  $('cardLimits').hidden=!!card?.demo;
   if(!card) return;
   $('carouselPosition').textContent=`${mod(Math.round(carouselPos.value),carouselPos.all.length)+1} из ${carouselPos.all.length}`;
   renderWalletCardDetails(card);
@@ -329,7 +338,6 @@ function applyWalletRoute(route){
   $('historyPanel').hidden=route!=='history';
   $('cashbackOverview').hidden=route!=='cashback';
   $('accountPanel').hidden=route!=='account';
-  $('brandHomeLabel').hidden=route==='home';
   markRoute(route);
   window.scrollTo(0,0);
 
@@ -374,7 +382,9 @@ async function loadWalletData(){
       apiPart('Список в кошельке','/api/me/cards'),
       apiPart('Ваши карты','/api/me/manual-cards'),
     ]);
-    await fillMeta(); renderCards(); writeDevice();
+    await fillMeta();
+    invalidateWalletViews(); limitCache.clear(); renderCards(); writeDevice();
+    for(const card of carouselPos.all) if(!card.demo&&card.rules?.length) getLimits(card).promise?.catch(()=>{});
     checkout.setWalletReady(true);
     if(!$('accountPanel').hidden) renderAccount();
   }catch(error){
@@ -386,12 +396,12 @@ async function loadWalletData(){
 function expireSession(){
   checkout.setWalletReady(false);
   deviceLogin=null;
-  usualCardId=null;
   sessionStorage.removeItem('advisor-auth-home');
   manual=[];
   saved=[];
   renderCards();
-  for(const id of ['addDialog','deleteDialog','planDialog','catalogDialog']) {const node=$(id); if(node) node.hidden=true;}
+  invalidateWalletViews(); limitCache.clear(); ++limitsRequest;
+  for(const id of ['addDialog','deleteDialog','cardSettingsDialog','planDialog','catalogDialog']) {const node=$(id); if(node) node.hidden=true;}
   if($('accountPanel')) $('accountPanel').hidden=true;
   $('hero').hidden=false; $('content').hidden=true;
   $('buyPanel').hidden=true; $('cardsPanel').hidden=true; $('cashbackPanel').hidden=true; $('historyPanel').hidden=true;
@@ -416,11 +426,13 @@ function trap(dialog){if(!dialog) return; dialog.addEventListener('keydown',even
 function openAddCard(source){
   if(document.documentElement.dataset.demo==='cards') return;
   addReturn=walletReturn=source||document.activeElement;
-  $('addRoutes').hidden=false; $('addCardForm').hidden=true; $('addTitle').textContent='Добавить карту';
-  $('addStatus').textContent=''; $('retryAdd').hidden=true; $('addDialog').hidden=false; $('addRouteBank').focus();
+  $('addTitle').textContent='Добавить карту';
+  $('addStatus').textContent=''; $('retryAdd').hidden=true; $('addDialog').hidden=false;
+  showBankForm();
 }
 function showBankForm(){
-  $('addRoutes').hidden=true; $('addCardForm').hidden=false; $('addCardForm').dataset.mode='bank'; $('addSource').value='bank';
+  $('addRoutes').hidden=false; $('addRouteBank').hidden=true; $('addCardForm').hidden=false; $('addCardForm').dataset.mode='bank'; $('addSource').value='bank';
+  $('newBank').replaceChildren();
   $('bankSearch').value=''; $('bankSearch').hidden=false; $('searchLabel').hidden=false;
   if($('addSelectedBank')) {$('addSelectedBank').hidden=true; $('addSelectedBank').textContent='';}
   if($('openCatalogSource')) $('openCatalogSource').hidden=false;
@@ -472,13 +484,28 @@ function monthTitle(month){
   const name=new Intl.DateTimeFormat('ru-RU',{month:'long', year:'numeric', timeZone:'UTC'}).format(new Date(month+'-01T12:00:00Z')).replace(/\s*г\.?$/,'');
   return name.charAt(0).toUpperCase()+name.slice(1);
 }
+const statsCache=new Map();
+let walletDataVersion=0;
+function invalidateWalletViews(){statsCache.clear(); ++walletDataVersion;}
+function walletStats(month){
+  const key=month||new Date().toISOString().slice(0,7);
+  const cached=statsCache.get(key);
+  if(cached && (!cached.time || Date.now()-cached.time<30_000)) return cached.promise;
+  const entry={};
+  entry.promise=api('/api/me/stats?month='+encodeURIComponent(key)).then(data=>{
+    entry.time=Date.now(); return data;
+  },error=>{if(statsCache.get(key)===entry) statsCache.delete(key); throw error;});
+  statsCache.set(key,entry);
+  if(statsCache.size>12) statsCache.delete(statsCache.keys().next().value);
+  return entry.promise;
+}
 async function renderMonthCashback(){
   const section=$('homeMonthCashback'), host=$('homeMonthCashbackBody');
   if(section.closest('[hidden]')) return;
   host.className='month-cashback is-loading';
   host.textContent='Считаем кэшбэк…';
   try{
-    const data=await api('/api/me/stats');
+    const data=await walletStats();
     host.className='month-cashback';
     host.replaceChildren();
     if(!data.count){
@@ -575,7 +602,7 @@ function buildActualCashbackEditor(item, trigger){
     busy(true);
     try{
       await api(`/api/me/purchases/${item.id}/cashback`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({amountKopecks:amount})});
-      item.actualCashbackKopecks=amount; syncNote(); trigger.textContent='Изменить кэшбэк'; toast('Начисление сохранено');
+      invalidateWalletViews(); item.actualCashbackKopecks=amount; syncNote(); trigger.textContent='Изменить кэшбэк'; toast('Начисление сохранено');
     }catch(e){error.textContent=e.message||'Не удалось сохранить'; error.hidden=false;}
     finally{busy(false);}
   };
@@ -583,7 +610,7 @@ function buildActualCashbackEditor(item, trigger){
     error.hidden=true; busy(true);
     try{
       await api(`/api/me/purchases/${item.id}/cashback`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({amountKopecks:null})});
-      item.actualCashbackKopecks=null; input.value=''; syncNote(); trigger.textContent='Подтвердить кэшбэк'; toast('Отметка удалена');
+      invalidateWalletViews(); item.actualCashbackKopecks=null; input.value=''; syncNote(); trigger.textContent='Подтвердить кэшбэк'; toast('Отметка удалена');
     }catch(e){error.textContent=e.message||'Не удалось удалить'; error.hidden=false;}
     finally{busy(false);}
   };
@@ -610,8 +637,7 @@ async function renderHistory(){
   const ticket = ++journalRequest;
   const host=$('historyBody'); host.className='journal is-loading'; host.textContent='Загружаем историю…';
   try{
-    const query=historyMonth?`?month=${encodeURIComponent(historyMonth)}`:'';
-    const data=await api('/api/me/stats'+query);
+    const data=await walletStats(historyMonth);
     if (ticket !== journalRequest) return;
     host.className='journal'; host.replaceChildren();
     if($('historyMonth') && data.month) $('historyMonth').value=data.month;
@@ -737,7 +763,7 @@ async function renderAccount(){
   $('settingsStatus').textContent='';
   host.className=''; host.setAttribute('aria-busy','true'); host.textContent='Загружаем статистику…';
   try{
-    const data=await api('/api/me/stats');
+    const data=await walletStats();
     if(ticket!==profileRequest) return;
     const month=document.createElement('p'); month.className='profile-month'; month.textContent=monthTitle(data.month);
     host.replaceChildren(month,profileMetrics(data));
@@ -836,7 +862,16 @@ async function submitNewCard(event){
   if(!id){$('addStatus').textContent='Выберите банк из списка.'; return;}
   button.disabled=true; button.textContent='Сохраняем…';
   try{
-    if(catalogMode){await api('/api/me/cards/'+encodeURIComponent(id),{method:'PUT'}); walletPreferredCard=id;}
+    if(catalogMode && !saved.includes(id)){await api('/api/me/cards/'+encodeURIComponent(id),{method:'PUT'}); walletPreferredCard=id;}
+    else if(catalogMode){
+      const templates=catalog.filter(card=>card.rules?.length);
+      const template=templates[Math.floor(Math.random()*templates.length)];
+      if(!template) throw new Error('Нет доступных учебных карт.');
+      const suffix=crypto.randomUUID().slice(0,8);
+      const rules=template.rules.map(rule=>({categoryId:rule.categoryId,rateBps:Math.min(10000,Math.max(1,rule.rateBps+100*(Math.floor(Math.random()*5)-2)))}));
+      const created=await api('/api/me/manual-cards',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:`${template.cardName.slice(0,58)} · учебная ${suffix}`,rules})});
+      walletPreferredCard=created.cardId;
+    }
     else{const bank=banks.find(item=>item.id===id); const created=await api('/api/me/manual-cards',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:bank.name,bankId:bank.id,rules:[]})}); walletPreferredCard=created.cardId;}
     $('addDialog').hidden=true; toast('Карта добавлена'); await load(); walletRoute('cards',true);
     $('addCashbackBtn').focus();
@@ -851,29 +886,17 @@ $('addRouteShot').addEventListener('click',()=>{
   if(typeof window.openCashbackDecision==='function') window.openCashbackDecision(back);
   else $('addCashbackBtn').click();
 });
-$('makeUsualBtn').addEventListener('click',async()=>{
-  const card=activeCard(); if(!card || usualCardBusy) return;
-  const clear=usualCardId===card.cardId;
-  usualCardBusy=true; syncUsualCard(card);
-  try{
-    const options=clear?{method:'DELETE'}:{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({cardId:card.cardId}),
-    };
-    await api('/api/me/usual-card',options);
-    usualCardId=clear?null:card.cardId;
-    toast(clear?'Карта убрана из сравнения':'Карта выбрана для сравнения в статистике');
-  }catch(error){toast(error.message);}
-  finally{usualCardBusy=false; syncUsualCard(activeCard());}
-});
-$('deleteActiveBtn').addEventListener('click',()=>{
+function askDelete(event){
   const card=activeCard(); if(!card) return;
   deleteTarget=card;
-  const menu=$('cardSettings');
-  menu.open=false;
+  const fromSettings=!cardSettingsDialog.hidden;
+  if(fromSettings) closeCardSettings();
   $('deleteDescription').textContent=`Карта «${card.cardName||card.name}» исчезнет из кошелька вместе с её условиями. Покупки останутся в истории.`;
   $('deleteStatus').textContent='';
-  openDialog($('deleteDialog'),$('cancelDelete'),menu.querySelector('summary'));
-});
+  openDialog($('deleteDialog'),$('cancelDelete'),fromSettings?$('addCashbackBtn'):event.currentTarget);
+}
+$('deleteActiveBtn').addEventListener('click',askDelete);
+$('deleteEmptyCard').addEventListener('click',askDelete);
 $('logout').addEventListener('click',async()=>{
   if(!window.confirm('Выйти из кошелька на этом устройстве?')) return;
   $('logout').disabled=true; $('settingsStatus').textContent='';
@@ -888,12 +911,20 @@ $('confirmDelete').addEventListener('click',async()=>{
   try{
     const path=deleteTarget.kind==='manual'?`/api/me/manual-cards/${encodeURIComponent(deleteTarget.cardId)}`:`/api/me/cards/${encodeURIComponent(deleteTarget.cardId)}`;
     await api(path,{method:'DELETE'});
-    if(usualCardId===deleteTarget.cardId) usualCardId=null;
-    $('deleteDialog').hidden=true; toast('Карта удалена'); await load(); $('cards-title').focus();
+    const {cardId,kind}=deleteTarget;
+    walletPreferredCard=carouselPos.all.find((card,index)=>index>Math.round(carouselPos.value)&&card.cardId!==cardId)?.cardId
+      || carouselPos.all.find(card=>card.cardId!==cardId)?.cardId;
+    if(kind==='manual') manual=manual.filter(card=>card.cardId!==cardId);
+    else saved=saved.filter(id=>id!==cardId);
+    invalidateWalletViews();
+    limitCache.delete(limitEndpoint(deleteTarget));
+    deleteTarget=null;
+    renderCards(); writeDevice();
+    $('deleteDialog').hidden=true; toast('Карта удалена'); $('cards-title').focus();
   }catch(error){$('deleteStatus').textContent=error.message;}
   finally{$('confirmDelete').disabled=false; $('confirmDelete').textContent='Удалить карту';}
 });
-['addDialog','deleteDialog'].forEach(id=>trap($(id)));
+['addDialog','deleteDialog','cardSettingsDialog'].forEach(id=>trap($(id)));
 function showSessionGate(message, retry){
   const gate=$('sessionGate'); if(!gate) return;
   gate.hidden=false; $('sessionGateStatus').textContent=message;

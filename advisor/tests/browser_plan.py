@@ -79,6 +79,18 @@ def check(base, chromium=None):
             expect(loc('planResult')).to_contain_text('250')
             metrics = loc('planResult').locator('[data-kopecks]').evaluate_all('(els)=>els.map(e=>Number(e.dataset.kopecks))')
             assert metrics == [0, 25000, 25000], metrics
+            def count_plan(route):
+                plan_requests.append(route.request.url)
+                route.continue_()
+            plan_requests = []
+            page.route('**/api/me/cashback-plan', count_plan)
+            loc('calculatePlan').click()
+            expect(loc('planResult')).to_contain_text('250')
+            assert not plan_requests
+            spend(1, 'supermarkets', '3000')
+            loc('calculatePlan').click()
+            expect(loc('planResult')).to_contain_text('350')
+            assert len(plan_requests) == 1
             expect(loc('planResult').get_by_role('button', name='Добавить предложения банка')).to_have_count(0)
             expect(loc('planResult').get_by_role('button', name='Я выбрал это в банке')).to_have_count(0)
             loc('planCurrent').click()

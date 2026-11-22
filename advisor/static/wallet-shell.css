@@ -206,7 +206,9 @@ html[data-theme=dark], html[data-theme=dark] body { background: var(--bg); color
 }
 .carousel-position { min-width: 72px; color: var(--quiet); font-size: 14px; font-variant-numeric: tabular-nums; }
 .card-carousel-details { margin: 6px 0 0; padding: 0; background: transparent; border: 0; min-height: 0; display: grid; gap: 8px; }
-.carousel-bank-title { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
+.carousel-bank-title { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
+#carouselControls .carousel-arrow { display: none; }
+#carouselControls { justify-content: center; }
 .carousel-demo-note { margin: 0; font-size: 13px; color: var(--quiet); }
 .carousel-categories { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 .carousel-categories li {
@@ -233,29 +235,9 @@ html[data-theme=dark], html[data-theme=dark] body { background: var(--bg); color
 }
 #cardActions .card-cashback-btn:hover { background: color-mix(in srgb, var(--accent) 91%, var(--accent-ink)); }
 #cardActions .card-cashback-btn:active { transform: scale(.985); }
-.card-settings { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--sheet); }
-.card-settings summary, .card-settings-options button, .add-routes button {
+.add-routes button {
   min-height: var(--touch); display: flex; align-items: center; gap: 10px;
   padding: 10px 14px; color: var(--ink); text-align: left; font-weight: 650;
-}
-.card-settings summary { justify-content: space-between; list-style: none; cursor: pointer; }
-.card-settings summary::-webkit-details-marker { display: none; }
-.card-settings summary svg { flex: none; transition: transform var(--control-ease); }
-.card-settings[open] summary svg { transform: rotate(180deg); }
-.card-settings-options { padding: 0 6px 6px; }
-.card-settings[open] .card-settings-options { animation: suggest-in 180ms var(--ease) both; }
-.card-settings-options button { width: 100%; background: transparent; border-radius: var(--radius-sm); }
-.card-settings-options button:hover { background: color-mix(in srgb, var(--ink) 7%, var(--sheet)); }
-.card-settings-options p { margin: 0 14px 8px; color: var(--quiet); font-size: 13px; line-height: 1.35; }
-.card-settings-options #deleteActiveBtn { color: var(--danger); }
-.card-settings-options #makeUsualBtn::after {
-  content: ''; flex: 0 0 28px; height: 16px; margin-inline-start: auto; border-radius: 10px;
-  border: 1px solid var(--quiet);
-  background: radial-gradient(circle at 7px 50%, var(--quiet) 0 4px, transparent 4.5px);
-}
-.card-settings-options #makeUsualBtn[aria-pressed=true]::after {
-  border-color: var(--accent-ink);
-  background: radial-gradient(circle at 20px 50%, var(--accent-ink) 0 4px, transparent 4.5px), var(--accent);
 }
 #cardCarousel .carousel-card-number-row {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;
@@ -398,12 +380,17 @@ html[data-theme=dark], html[data-theme=dark] body { background: var(--bg); color
 
 #toast.toast {
   left: 16px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); margin: 0 auto; max-width: min(360px, calc(100% - 32px));
+  position: fixed; top: auto; height: fit-content; pointer-events: none;
   background: var(--graphite); color: var(--graphite-ink); border-radius: var(--radius-md); z-index: 25;
 }
-body:has(#catalogDialog:not([hidden]) #reviewForm:not([hidden])) #toast,
-body:has(#addDialog:not([hidden])) #toast {
-  top: calc(12px + env(safe-area-inset-top)); bottom: auto;
-}
+#cardSettingsDialog .dialog-card { background: var(--sheet); }
+.delete-card-action { min-height: var(--touch); padding: 8px 14px; background: transparent; color: var(--danger); font-weight: 650; }
+#cardSettingsDialog .delete-card-action { margin-top: 10px; }
+#cardLimits h3 { margin: 0; padding: 12px 14px; }
+#cardLimits [aria-invalid] { border-color: var(--danger); }
+#catalogDialog .dialog-card, #catalogDialog .shot-form { background: var(--sheet); }
+#catalogDialog .shot-drop { min-height: 52px; padding-block: 10px; }
+#enterCashbackManually { margin-bottom: 10px; }
 
 .auth-screen { background: var(--bg); }
 .auth-card { background: var(--sheet); }
@@ -560,7 +547,6 @@ p:focus, span:focus, li:focus, strong:focus, h1:focus, h2:focus, h3:focus {
 
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
 .brand-name { display: grid; gap: 2px; text-align: start; }
-.brand-home-label { color: var(--quiet); font-size: 11px; font-weight: 650; letter-spacing: 0; }
 #themeToggle svg { grid-area: 1 / 1; transition: opacity 160ms var(--ease), scale 160ms var(--ease); }
 #themeToggle .theme-sun, #themeToggle[aria-pressed=true] .theme-moon { opacity: 0; scale: .65; }
 #themeToggle[aria-pressed=true] .theme-sun { opacity: 1; scale: 1; }
@@ -609,7 +595,7 @@ p:focus, span:focus, li:focus, strong:focus, h1:focus, h2:focus, h3:focus {
 #deleteDialog .dialog-actions .danger { background: var(--danger); color: var(--bg); }
 #deleteDialog [role=alert]:empty { display: none; }
 @media (prefers-reduced-motion: reduce) {
-  #addDialog .bank-list:not([hidden]), .card-settings[open] .card-settings-options { animation: none; }
+  #addDialog .bank-list:not([hidden]) { animation: none; }
 }
 .card-limits { margin: 12px 0; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--sheet); }
 .card-limits summary { min-height: var(--touch); padding: 12px 14px; font-weight: 650; cursor: pointer; }

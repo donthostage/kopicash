@@ -113,7 +113,7 @@ const checkout = (() => {
     form.onsubmit=async e=>{e.preventDefault();if(recording||!select.value)return;const body={chosenCardId:select.value,categoryId:selected,amountKopecks:value};const sig=JSON.stringify(body),key='advisor-purchase:'+deviceLogin;
       let receipt;try{receipt=JSON.parse(sessionStorage.getItem(key))}catch{}if(receipt?.sig!==sig){receipt={sig,id:crypto.randomUUID()};sessionStorage.setItem(key,JSON.stringify(receipt));}
       recording=true;submit.disabled=true;msg.textContent='Записываем…';const ticket=epoch;
-      try{await api('/api/me/purchases',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...body,requestId:receipt.id})});sessionStorage.removeItem(key);if(epoch!==ticket){toast('Покупка записана');return;}field.value='';el('clearAmount').hidden=true;results.replaceChildren();status.textContent='Покупка записана. '+label(selected)+' · '+amountText(value);const next=button('Открыть историю',()=>showHistory());results.append(next);next.focus();}
+      try{await api('/api/me/purchases',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...body,requestId:receipt.id})});invalidateWalletViews();sessionStorage.removeItem(key);if(epoch!==ticket){toast('Покупка записана');return;}field.value='';el('clearAmount').hidden=true;results.replaceChildren();status.textContent='Покупка записана. '+label(selected)+' · '+amountText(value);const next=button('Открыть историю',()=>showHistory());results.append(next);next.focus();}
       catch(error){msg.textContent=error?.message||'Не удалось подтвердить запись. Повторите с теми же данными — дубля не будет.';}finally{recording=false;submit.disabled=false;}
     };return form;
   }

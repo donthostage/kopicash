@@ -1,0 +1,26 @@
+#buyPanel .buy-label { display: block; }
+#buyPanel :is(.buy-amount, .record-form select) { width: 100%; min-width: 0; min-height: var(--touch, 44px); }
+#buyPanel .buy-amount { padding-block: 10px; padding-inline-start: 12px; border-radius: var(--control-radius, 12px); }
+#buyResults > a.buy-secondary { text-decoration: none; }
+#cashbackOverview > .history-month-label { margin-block-end: 16px; }
+
+.react-plan-dialog {
+  width: min(480px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 0;
+  border: 0; border-radius: 24px; background: var(--sheet); color: var(--ink);
+  overscroll-behavior: contain;
+}
+.react-plan-dialog::backdrop { background: #13151180; backdrop-filter: blur(4px); }
+.react-plan-dialog .dialog-card { width: 100%; max-height: calc(100dvh - 24px); }
+.react-plan-dialog :is(.shot-form label, #spendingInputs) { display: grid; gap: 6px; min-width: 0; }
+.react-plan-dialog .cb-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.react-plan-dialog :is(.shot-form input, .shot-form select, button:not(.confirm)) {
+  min-width: 0; padding: 8px 10px; border: 1px solid var(--control-border); border-radius: var(--control-radius); background: var(--paper); color: inherit;
+}
+.react-plan-dialog button[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+.react-plan-dialog button:disabled { opacity: .55; }
+.react-plan-dialog #planResult:not(:empty) { margin-top: 16px; }
+.react-plan-dialog .cb-warning { color: var(--quiet); font-size: .875rem; }
+@media (max-width: 600px) {
+  .react-plan-dialog { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 20px 20px 0 0; }
+  .react-plan-dialog .dialog-card { max-height: 92dvh; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+}
