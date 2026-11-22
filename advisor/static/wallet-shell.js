@@ -282,8 +282,6 @@ function updateCarouselDetails(card){
   }
   $('cardLimits').hidden=!!card?.demo;
   if(!card) return;
-  const paint=carouselCardPaint(card);
-  $('cardCarousel').style.setProperty('--carousel-glow',paint.color);
   $('carouselPosition').textContent=`${mod(Math.round(carouselPos.value),carouselPos.all.length)+1} из ${carouselPos.all.length}`;
   renderWalletCardDetails(card);
 }

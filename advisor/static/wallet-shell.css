@@ -161,21 +161,7 @@ html[data-theme=dark], html[data-theme=dark] body { background: var(--bg); color
   filter: blur(32px) !important;
   transition: background-color 320ms var(--ease), opacity 320ms var(--ease), transform 320ms var(--ease);
 }
-.card-carousel .carousel-shadow {
-  position: absolute;
-  z-index: 0;
-  left: 50%;
-  bottom: 8px;
-  width: 82%;
-  height: 42px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: var(--carousel-glow, var(--sun));
-  opacity: 0.48;
-  filter: blur(32px);
-  pointer-events: none;
-  transition: background-color 320ms var(--ease), opacity 320ms var(--ease);
-}
+#cardCarousel::before { content: none; }
 .card-carousel .carousel-card[data-fan-role="behind"] {
   filter: none !important;
 }
@@ -202,6 +188,11 @@ html[data-theme=dark], html[data-theme=dark] body { background: var(--bg); color
     0 32px 56px rgba(23, 24, 23, .3),
     0 0 0 1px rgba(255, 255, 255, .18),
     0 0 36px color-mix(in srgb, var(--carousel-glow, var(--sun)) 45%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .34) !important;
+}
+#cardCarousel .carousel-card.is-center {
+  box-shadow: 0 18px 32px rgba(23, 24, 23, .23),
+    0 0 0 1px rgba(255, 255, 255, .18),
     inset 0 1px 0 rgba(255, 255, 255, .34) !important;
 }
 .card-carousel:before, .carousel-card-shadow { transition: background-color 280ms var(--ease), opacity 280ms var(--ease); }
