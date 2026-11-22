@@ -1,0 +1,14 @@
+include:
+  - project: pipelines/pipelines
+    ref: master
+    file:
+      - /jobs/spirit.yaml
+      - /jobs/build.yaml
+  - local: /advisor/.gitlab-ci.yml
+
+stages: [test, build, deploy]
+
+variables:
+  DOCKER_ARTIFACTORY_REGISTRY: registry.spirit.t-education.com
+  DEPLOY_USER: root
+  DEPLOY_IMG: registry.spirit.t-education.com/cicd-images/base-noble:release-1.1.0

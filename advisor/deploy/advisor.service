@@ -1,0 +1,23 @@
+[Unit]
+Description=Advisor staging application
+After=network.target
+
+[Service]
+User=advisor
+Group=advisor
+WorkingDirectory=/opt/advisor/current
+Environment=ADVISOR_DB=/var/lib/advisor/advisor.sqlite3
+Environment=ADVISOR_API_KEY_FILE=/var/lib/advisor/.advisor-api-key
+EnvironmentFile=-/etc/advisor.env
+ExecStart=/opt/advisor/current/.venv/bin/python -m uvicorn advisor:app --host 127.0.0.1 --port 8766 --forwarded-allow-ips 127.0.0.1
+Restart=on-failure
+RestartSec=2s
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/advisor
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

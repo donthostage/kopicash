@@ -1,0 +1,1511 @@
+{
+  "asOf": "2026-11-20",
+  "source": "https://www.cbr.ru/banking_sector/credit/FullCoList",
+  "banks": [
+    {
+      "registrationNumber": "2860",
+      "name": "(АО Банк Агророс)",
+      "registeredName": "(АО \"Банк \"Агророс\")"
+    },
+    {
+      "registrationNumber": "575",
+      "name": "АБ Капитал",
+      "registeredName": "АО АБ \"Капитал\""
+    },
+    {
+      "registrationNumber": "328",
+      "name": "АБ РОССИЯ",
+      "registeredName": "АО \"АБ \"РОССИЯ\""
+    },
+    {
+      "registrationNumber": "2306",
+      "name": "Абсолют Банк",
+      "registeredName": "АКБ \"Абсолют Банк\" (ПАО)"
+    },
+    {
+      "registrationNumber": "2879",
+      "name": "АВАНГАРД",
+      "registeredName": "ПАО АКБ \"АВАНГАРД\""
+    },
+    {
+      "registrationNumber": "170",
+      "name": "Авто Финанс Банк",
+      "registeredName": "АО \"Авто Финанс Банк\""
+    },
+    {
+      "registrationNumber": "1973",
+      "name": "АвтоКредитБанк",
+      "registeredName": "ООО \"АвтоКредитБанк\""
+    },
+    {
+      "registrationNumber": "2880",
+      "name": "АГРОПРОМКРЕДИТ",
+      "registeredName": "АО КБ \"АГРОПРОМКРЕДИТ\""
+    },
+    {
+      "registrationNumber": "1810",
+      "name": "Азиатско-Тихоокеанский Банк",
+      "registeredName": "\"Азиатско-Тихоокеанский Банк\" (АО)"
+    },
+    {
+      "registrationNumber": "3303",
+      "name": "Азия-Инвест Банк",
+      "registeredName": "Азия-Инвест Банк (АО)"
+    },
+    {
+      "registrationNumber": "2645",
+      "name": "АИКБ Енисейский объединенный банк",
+      "registeredName": "АО АИКБ \"Енисейский объединенный банк\""
+    },
+    {
+      "registrationNumber": "3475",
+      "name": "АйСиБиСи Банк",
+      "registeredName": "АйСиБиСи Банк (АО)"
+    },
+    {
+      "registrationNumber": "2590",
+      "name": "АК БАРС БАНК",
+      "registeredName": "ПАО \"АК БАРС\" БАНК"
+    },
+    {
+      "registrationNumber": "1788",
+      "name": "АКИБ Почтобанк",
+      "registeredName": "АО АКИБ \"Почтобанк\""
+    },
+    {
+      "registrationNumber": "2587",
+      "name": "АКИБАНК",
+      "registeredName": "ПАО \"АКИБАНК\""
+    },
+    {
+      "registrationNumber": "2119",
+      "name": "Алеф-Банк",
+      "registeredName": "АО АКБ \"Алеф-Банк\""
+    },
+    {
+      "registrationNumber": "2602",
+      "name": "Алмазэргиэнбанк",
+      "registeredName": "АКБ \"Алмазэргиэнбанк\" АО"
+    },
+    {
+      "registrationNumber": "2659",
+      "name": "Алтайкапиталбанк",
+      "registeredName": "ООО КБ \"Алтайкапиталбанк\""
+    },
+    {
+      "registrationNumber": "2070",
+      "name": "АЛТЫНБАНК",
+      "registeredName": "ООО \"АЛТЫНБАНК\""
+    },
+    {
+      "registrationNumber": "1326",
+      "name": "АЛЬФА-БАНК",
+      "registeredName": "АО \"АЛЬФА-БАНК\""
+    },
+    {
+      "registrationNumber": "2914",
+      "name": "АРЕСБАНК",
+      "registeredName": "ООО КБ \"АРЕСБАНК\""
+    },
+    {
+      "registrationNumber": "2776",
+      "name": "АТБ Банк",
+      "registeredName": "ООО \"АТБ\" Банк"
+    },
+    {
+      "registrationNumber": "2990",
+      "name": "Байкалкредобанк",
+      "registeredName": "КБ \"Байкалкредобанк\" (АО)"
+    },
+    {
+      "registrationNumber": "444",
+      "name": "БАЛАКОВО-БАНК",
+      "registeredName": "АО \"БАЛАКОВО-БАНК\""
+    },
+    {
+      "registrationNumber": "3176",
+      "name": "БАЛТИНВЕСТБАНК",
+      "registeredName": "ПАО \"БАЛТИНВЕСТБАНК\""
+    },
+    {
+      "registrationNumber": "3538",
+      "name": "Банк 131",
+      "registeredName": "АО \"Банк 131\""
+    },
+    {
+      "registrationNumber": "415",
+      "name": "Банк Аверс",
+      "registeredName": "АО Банк \"Аверс\""
+    },
+    {
+      "registrationNumber": "3231",
+      "name": "БАНК АГОРА",
+      "registeredName": "БАНК \"АГОРА\" ООО"
+    },
+    {
+      "registrationNumber": "567",
+      "name": "Банк Акцепт",
+      "registeredName": "АО \"Банк Акцепт\""
+    },
+    {
+      "registrationNumber": "53",
+      "name": "Банк АЛЕКСАНДРОВСКИЙ",
+      "registeredName": "ПАО Банк \"АЛЕКСАНДРОВСКИЙ\""
+    },
+    {
+      "registrationNumber": "3505",
+      "name": "БАНК БЕРЕЙТ",
+      "registeredName": "АО \"БАНК БЕРЕЙТ\""
+    },
+    {
+      "registrationNumber": "3138",
+      "name": "Банк БЖФ",
+      "registeredName": "АО \"Банк БЖФ\""
+    },
+    {
+      "registrationNumber": "3287",
+      "name": "Банк ВБРР",
+      "registeredName": "Банк \"ВБРР\" (АО)"
+    },
+    {
+      "registrationNumber": "524",
+      "name": "Банк Венец",
+      "registeredName": "АО Банк \"Венец\""
+    },
+    {
+      "registrationNumber": "1896",
+      "name": "Банк Вологжанин",
+      "registeredName": "АО \"Банк \"Вологжанин\""
+    },
+    {
+      "registrationNumber": "1000",
+      "name": "Банк ВТБ",
+      "registeredName": "Банк ВТБ (ПАО)"
+    },
+    {
+      "registrationNumber": "2796",
+      "name": "Банк Вятич",
+      "registeredName": "Банк \"Вятич\" (АО)"
+    },
+    {
+      "registrationNumber": "2438",
+      "name": "Банк Глобус",
+      "registeredName": "Банк Глобус (АО)"
+    },
+    {
+      "registrationNumber": "354",
+      "name": "Банк ГПБ",
+      "registeredName": "Банк ГПБ (АО)"
+    },
+    {
+      "registrationNumber": "1948",
+      "name": "Банк ДАЛЕНА",
+      "registeredName": "АО \"Банк ДАЛЕНА\""
+    },
+    {
+      "registrationNumber": "2312",
+      "name": "Банк ДОМ.РФ",
+      "registeredName": "АО \"Банк ДОМ.РФ\""
+    },
+    {
+      "registrationNumber": "1809",
+      "name": "БАНК Ермак",
+      "registeredName": "АО БАНК \"Ермак\""
+    },
+    {
+      "registrationNumber": "817",
+      "name": "Банк Заречье",
+      "registeredName": "\"Банк Заречье\" (АО)"
+    },
+    {
+      "registrationNumber": "3255",
+      "name": "Банк ЗЕНИТ",
+      "registeredName": "ПАО Банк ЗЕНИТ"
+    },
+    {
+      "registrationNumber": "2307",
+      "name": "Банк Инго",
+      "registeredName": "АО Банк Инго"
+    },
+    {
+      "registrationNumber": "2216",
+      "name": "Банк Интеза",
+      "registeredName": "АО \"Банк Интеза\""
+    },
+    {
+      "registrationNumber": "600",
+      "name": "Банк ИПБ",
+      "registeredName": "Банк ИПБ (АО)"
+    },
+    {
+      "registrationNumber": "2390",
+      "name": "Банк ИТУРУП",
+      "registeredName": "Банк \"ИТУРУП\" (ООО)"
+    },
+    {
+      "registrationNumber": "2802",
+      "name": "Банк Йошкар-Ола",
+      "registeredName": "Банк \"Йошкар-Ола\" (ПАО)"
+    },
+    {
+      "registrationNumber": "2494",
+      "name": "Банк Кредит Свисс (Москва)",
+      "registeredName": "АО \"Банк Кредит Свисс (Москва)\""
+    },
+    {
+      "registrationNumber": "2905",
+      "name": "Банк Кремлевский",
+      "registeredName": "\"Банк Кремлевский\" ООО"
+    },
+    {
+      "registrationNumber": "2584",
+      "name": "Банк КУБ",
+      "registeredName": "Банк \"КУБ\" (АО)"
+    },
+    {
+      "registrationNumber": "609",
+      "name": "Банк Кузнецкий",
+      "registeredName": "ПАО Банк \"Кузнецкий\""
+    },
+    {
+      "registrationNumber": "2568",
+      "name": "БАНК КУРГАН",
+      "registeredName": "ООО БАНК \"КУРГАН\""
+    },
+    {
+      "registrationNumber": "1343",
+      "name": "Банк Левобережный",
+      "registeredName": "Банк \"Левобережный\" (ПАО)"
+    },
+    {
+      "registrationNumber": "3395",
+      "name": "Банк МБА-МОСКВА",
+      "registeredName": "\"Банк \"МБА-МОСКВА\" ООО"
+    },
+    {
+      "registrationNumber": "3247",
+      "name": "БАНК МОСКВА-СИТИ",
+      "registeredName": "АО БАНК \"МОСКВА-СИТИ\""
+    },
+    {
+      "registrationNumber": "2722",
+      "name": "БАНК МСКБ",
+      "registeredName": "БАНК \"МСКБ\" (АО)"
+    },
+    {
+      "registrationNumber": "695",
+      "name": "Банк Нальчик",
+      "registeredName": "Банк \"Нальчик\" ООО"
+    },
+    {
+      "registrationNumber": "3421",
+      "name": "Банк Национальный стандарт",
+      "registeredName": "АО Банк \"Национальный стандарт\""
+    },
+    {
+      "registrationNumber": "1949",
+      "name": "БАНК НБС",
+      "registeredName": "АО БАНК НБС"
+    },
+    {
+      "registrationNumber": "2611",
+      "name": "Банк Объединенный капитал",
+      "registeredName": "АО Банк \"Объединенный капитал\""
+    },
+    {
+      "registrationNumber": "3269",
+      "name": "БАНК ОРЕНБУРГ",
+      "registeredName": "АО \"БАНК ОРЕНБУРГ\""
+    },
+    {
+      "registrationNumber": "875",
+      "name": "Банк Пермь",
+      "registeredName": "Банк Пермь (АО)"
+    },
+    {
+      "registrationNumber": "3251",
+      "name": "Банк ПСБ",
+      "registeredName": "ПАО \"Банк ПСБ\""
+    },
+    {
+      "registrationNumber": "2551",
+      "name": "Банк ПСКБ",
+      "registeredName": "АО Банк \"ПСКБ\""
+    },
+    {
+      "registrationNumber": "3543",
+      "name": "Банк Пэйджин",
+      "registeredName": "ООО Банк \"Пэйджин\""
+    },
+    {
+      "registrationNumber": "3013",
+      "name": "Банк Развитие-Столица",
+      "registeredName": "АО Банк \"Развитие-Столица\""
+    },
+    {
+      "registrationNumber": "2506",
+      "name": "банк Раунд",
+      "registeredName": "ООО \"банк Раунд\""
+    },
+    {
+      "registrationNumber": "3450",
+      "name": "Банк РЕСО Кредит",
+      "registeredName": "Банк \"РЕСО Кредит\" (АО)"
+    },
+    {
+      "registrationNumber": "3415",
+      "name": "Банк РСИ",
+      "registeredName": "ООО \"Банк РСИ\""
+    },
+    {
+      "registrationNumber": "2289",
+      "name": "Банк Русский Стандарт",
+      "registeredName": "АО \"Банк Русский Стандарт\""
+    },
+    {
+      "registrationNumber": "436",
+      "name": "Банк Санкт-Петербург",
+      "registeredName": "ПАО \"Банк \"Санкт-Петербург\""
+    },
+    {
+      "registrationNumber": "330",
+      "name": "Банк Саратов",
+      "registeredName": "ООО Банк \"Саратов\""
+    },
+    {
+      "registrationNumber": "2816",
+      "name": "БАНК СГБ",
+      "registeredName": "АО \"БАНК СГБ\""
+    },
+    {
+      "registrationNumber": "2034",
+      "name": "Банк СЕРВИС РЕЗЕРВ",
+      "registeredName": "Банк \"СЕРВИС РЕЗЕРВ\" (АО)"
+    },
+    {
+      "registrationNumber": "705",
+      "name": "Банк Синара",
+      "registeredName": "АО Банк Синара"
+    },
+    {
+      "registrationNumber": "588",
+      "name": "БАНК СНГБ",
+      "registeredName": "АО БАНК \"СНГБ\""
+    },
+    {
+      "registrationNumber": "1376",
+      "name": "Банк Снежинский",
+      "registeredName": "Банк \"Снежинский\" АО"
+    },
+    {
+      "registrationNumber": "1288",
+      "name": "Банк Ставр",
+      "registeredName": "ПАО \"Банк Ставр\""
+    },
+    {
+      "registrationNumber": "1312",
+      "name": "Банк ТКПБ",
+      "registeredName": "АО Банк \"ТКПБ\""
+    },
+    {
+      "registrationNumber": "933",
+      "name": "Банк Торжок",
+      "registeredName": "АО \"Банк \"Торжок\""
+    },
+    {
+      "registrationNumber": "3545",
+      "name": "Банк Точка",
+      "registeredName": "ООО \"Банк Точка\""
+    },
+    {
+      "registrationNumber": "3279",
+      "name": "Банк ТРАСТ",
+      "registeredName": "Банк \"ТРАСТ\" (ПАО)"
+    },
+    {
+      "registrationNumber": "2275",
+      "name": "БАНК УРАЛСИБ",
+      "registeredName": "ПАО \"БАНК УРАЛСИБ\""
+    },
+    {
+      "registrationNumber": "2799",
+      "name": "Банк ФИНАМ",
+      "registeredName": "АО \"Банк ФИНАМ\""
+    },
+    {
+      "registrationNumber": "3388",
+      "name": "Банк Финсервис",
+      "registeredName": "АО \"Банк Финсервис\""
+    },
+    {
+      "registrationNumber": "3527",
+      "name": "Банк ЧБРР",
+      "registeredName": "АО \"Банк ЧБРР\""
+    },
+    {
+      "registrationNumber": "3574",
+      "name": "Банк Элемент",
+      "registeredName": "Банк Элемент (ООО)"
+    },
+    {
+      "registrationNumber": "1399",
+      "name": "банк Элита",
+      "registeredName": "ООО банк \"Элита\""
+    },
+    {
+      "registrationNumber": "2929",
+      "name": "ББР Банк",
+      "registeredName": "ББР Банк (АО)"
+    },
+    {
+      "registrationNumber": "101",
+      "name": "БКС Банк",
+      "registeredName": "АО \"БКС Банк\""
+    },
+    {
+      "registrationNumber": "2368",
+      "name": "Бланк банк",
+      "registeredName": "ООО \"Бланк банк\""
+    },
+    {
+      "registrationNumber": "2748",
+      "name": "БМ-Банк",
+      "registeredName": "АО \"БМ-Банк\""
+    },
+    {
+      "registrationNumber": "3482",
+      "name": "БМВ Банк",
+      "registeredName": "ООО \"БМВ Банк\""
+    },
+    {
+      "registrationNumber": "3407",
+      "name": "БНП ПАРИБА БАНК",
+      "registeredName": "\"БНП ПАРИБА БАНК\" АО"
+    },
+    {
+      "registrationNumber": "1144",
+      "name": "Братский АНКБ",
+      "registeredName": "\"Братский АНКБ\" АО"
+    },
+    {
+      "registrationNumber": "2883",
+      "name": "БСТ-БАНК",
+      "registeredName": "\"БСТ-БАНК\" АО"
+    },
+    {
+      "registrationNumber": "1745",
+      "name": "БыстроБанк",
+      "registeredName": "ПАО \"БыстроБанк\""
+    },
+    {
+      "registrationNumber": "2309",
+      "name": "БЭНК ОФ ЧАЙНА",
+      "registeredName": "АКБ \"БЭНК ОФ ЧАЙНА\" (АО)"
+    },
+    {
+      "registrationNumber": "1291",
+      "name": "ВАКОБАНК",
+      "registeredName": "АО КБ \"ВАКОБАНК\""
+    },
+    {
+      "registrationNumber": "841",
+      "name": "ВБ Банк",
+      "registeredName": "ООО \"ВБ Банк\""
+    },
+    {
+      "registrationNumber": "598",
+      "name": "Великие Луки банк",
+      "registeredName": "АО \"Великие Луки банк\""
+    },
+    {
+      "registrationNumber": "903",
+      "name": "ВЛАДБИЗНЕСБАНК",
+      "registeredName": "АО \"ВЛАДБИЗНЕСБАНК\""
+    },
+    {
+      "registrationNumber": "3173",
+      "name": "ВНЕШФИНБАНК",
+      "registeredName": "ООО КБ \"ВНЕШФИНБАНК\""
+    },
+    {
+      "registrationNumber": "3095",
+      "name": "Вэйбанк",
+      "registeredName": "\"Вэйбанк\" АО"
+    },
+    {
+      "registrationNumber": "3252",
+      "name": "Газэнергобанк",
+      "registeredName": "АО \"Газэнергобанк\""
+    },
+    {
+      "registrationNumber": "2490",
+      "name": "ГЕНБАНК",
+      "registeredName": "АО \"ГЕНБАНК\""
+    },
+    {
+      "registrationNumber": "2982",
+      "name": "ГОРБАНК",
+      "registeredName": "АО \"ГОРБАНК\""
+    },
+    {
+      "registrationNumber": "665",
+      "name": "ГТ банк",
+      "registeredName": "ООО КБ \"ГТ банк\""
+    },
+    {
+      "registrationNumber": "256",
+      "name": "ГУТА-БАНК",
+      "registeredName": "АО \"ГУТА-БАНК\""
+    },
+    {
+      "registrationNumber": "646",
+      "name": "Датабанк",
+      "registeredName": "АО \"Датабанк\""
+    },
+    {
+      "registrationNumber": "3330",
+      "name": "Денизбанк Москва",
+      "registeredName": "АО \"Денизбанк Москва\""
+    },
+    {
+      "registrationNumber": "2738",
+      "name": "Держава",
+      "registeredName": "АКБ \"Держава\" ПАО"
+    },
+    {
+      "registrationNumber": "2629",
+      "name": "Дж.П. Морган Банк Интернешнл",
+      "registeredName": "КБ \"Дж.П. Морган Банк Интернешнл\" (ООО)"
+    },
+    {
+      "registrationNumber": "3328",
+      "name": "Дойче Банк",
+      "registeredName": "ООО \"Дойче Банк\""
+    },
+    {
+      "registrationNumber": "857",
+      "name": "Долинск",
+      "registeredName": "КБ \"Долинск\" (АО)"
+    },
+    {
+      "registrationNumber": "492",
+      "name": "Донкомбанк",
+      "registeredName": "ПАО \"Донкомбанк\""
+    },
+    {
+      "registrationNumber": "990",
+      "name": "Дружба",
+      "registeredName": "ООО КБ \"Дружба\""
+    },
+    {
+      "registrationNumber": "1765",
+      "name": "ЕАТПБанк",
+      "registeredName": "АО ЕАТПБанк"
+    },
+    {
+      "registrationNumber": "2065",
+      "name": "ЖИВАГО БАНК",
+      "registeredName": "ООО \"ЖИВАГО БАНК\""
+    },
+    {
+      "registrationNumber": "574",
+      "name": "ЗЕМКОМБАНК",
+      "registeredName": "ООО \"ЗЕМКОМБАНК\""
+    },
+    {
+      "registrationNumber": "2559",
+      "name": "ЗИРААТ БАНК (МОСКВА)",
+      "registeredName": "\"ЗИРААТ БАНК (МОСКВА)\" (АО)"
+    },
+    {
+      "registrationNumber": "1732",
+      "name": "ИК Банк",
+      "registeredName": "АО \"ИК Банк\""
+    },
+    {
+      "registrationNumber": "2564",
+      "name": "ИКБР ЯРИНТЕРБАНК",
+      "registeredName": "ИКБР \"ЯРИНТЕРБАНК\" (ООО)"
+    },
+    {
+      "registrationNumber": "1829",
+      "name": "Инбанк",
+      "registeredName": "ООО \"Инбанк\""
+    },
+    {
+      "registrationNumber": "2763",
+      "name": "ИНВЕСТТОРГБАНК",
+      "registeredName": "ИНВЕСТТОРГБАНК АО"
+    },
+    {
+      "registrationNumber": "2495",
+      "name": "ИНГ БАНК (ЕВРАЗИЯ)",
+      "registeredName": "ИНГ БАНК (ЕВРАЗИЯ) АО"
+    },
+    {
+      "registrationNumber": "2609",
+      "name": "ИТ Банк",
+      "registeredName": "АО \"ИТ Банк\""
+    },
+    {
+      "registrationNumber": "2867",
+      "name": "ИШБАНК",
+      "registeredName": "АО \"ИШБАНК\""
+    },
+    {
+      "registrationNumber": "2",
+      "name": "КАБ Викинг",
+      "registeredName": "АО \"КАБ \"Викинг\""
+    },
+    {
+      "registrationNumber": "1151",
+      "name": "Калуга",
+      "registeredName": "ООО КБ \"Калуга\""
+    },
+    {
+      "registrationNumber": "438",
+      "name": "Камкомбанк",
+      "registeredName": "ООО \"Камкомбанк\""
+    },
+    {
+      "registrationNumber": "708",
+      "name": "КБЭР Банк Казани",
+      "registeredName": "ООО КБЭР \"Банк Казани\""
+    },
+    {
+      "registrationNumber": "842",
+      "name": "Кетовский",
+      "registeredName": "ООО КБ \"Кетовский\""
+    },
+    {
+      "registrationNumber": "1781",
+      "name": "КИБ ЕВРОАЛЬЯНС",
+      "registeredName": "АО КИБ \"ЕВРОАЛЬЯНС\""
+    },
+    {
+      "registrationNumber": "3298",
+      "name": "Классик Эконом Банк",
+      "registeredName": "АО \"Классик Эконом Банк\""
+    },
+    {
+      "registrationNumber": "2103",
+      "name": "КМ Профильный Банк",
+      "registeredName": "КМ \"Профильный Банк\" (АО)"
+    },
+    {
+      "registrationNumber": "1281",
+      "name": "комбанк Арзамас",
+      "registeredName": "АО комбанк \"Арзамас\""
+    },
+    {
+      "registrationNumber": "1114",
+      "name": "Комбанк Химик",
+      "registeredName": "ПАО Комбанк \"Химик\""
+    },
+    {
+      "registrationNumber": "3333",
+      "name": "КОММЕРЦБАНК (ЕВРАЗИЯ)",
+      "registeredName": "АО \"КОММЕРЦБАНК (ЕВРАЗИЯ)\""
+    },
+    {
+      "registrationNumber": "3446",
+      "name": "Коммерческий Индо Банк",
+      "registeredName": "\"Коммерческий Индо Банк\" ООО"
+    },
+    {
+      "registrationNumber": "3184",
+      "name": "Континенталь",
+      "registeredName": "КБ \"Континенталь\" ООО"
+    },
+    {
+      "registrationNumber": "3161",
+      "name": "Контур.Банк",
+      "registeredName": "ПАО \"Контур.Банк\""
+    },
+    {
+      "registrationNumber": "2245",
+      "name": "КОСМОС",
+      "registeredName": "АО КБ \"КОСМОС\""
+    },
+    {
+      "registrationNumber": "1115",
+      "name": "Костромаселькомбанк",
+      "registeredName": "ООО \"Костромаселькомбанк\""
+    },
+    {
+      "registrationNumber": "3300",
+      "name": "КОШЕЛЕВ-БАНК",
+      "registeredName": "АО \"КОШЕЛЕВ-БАНК\""
+    },
+    {
+      "registrationNumber": "1680",
+      "name": "Креди Агриколь КИБ",
+      "registeredName": "Креди Агриколь КИБ АО"
+    },
+    {
+      "registrationNumber": "3311",
+      "name": "Кредит Европа Банк (Россия)",
+      "registeredName": "АО \"Кредит Европа Банк (Россия)\""
+    },
+    {
+      "registrationNumber": "2682",
+      "name": "Крокус-Банк",
+      "registeredName": "КБ \"Крокус-Банк\" (ООО)"
+    },
+    {
+      "registrationNumber": "2499",
+      "name": "Крона-Банк",
+      "registeredName": "ООО \"Крона-Банк\""
+    },
+    {
+      "registrationNumber": "2518",
+      "name": "Кубань Кредит",
+      "registeredName": "КБ \"Кубань Кредит\" ООО"
+    },
+    {
+      "registrationNumber": "478",
+      "name": "Кубаньторгбанк",
+      "registeredName": "АО \"Кубаньторгбанк\""
+    },
+    {
+      "registrationNumber": "2868",
+      "name": "Кузбассхимбанк",
+      "registeredName": "АКБ \"Кузбассхимбанк\" (ПАО)"
+    },
+    {
+      "registrationNumber": "1158",
+      "name": "Кузнецкбизнесбанк",
+      "registeredName": "АО \"Кузнецкбизнесбанк\""
+    },
+    {
+      "registrationNumber": "3525",
+      "name": "КЭБ ЭйчЭнБи Банк",
+      "registeredName": "ООО \"КЭБ ЭйчЭнБи Банк\""
+    },
+    {
+      "registrationNumber": "1920",
+      "name": "Ланта-Банк",
+      "registeredName": "АКБ \"Ланта-Банк\" (АО)"
+    },
+    {
+      "registrationNumber": "2707",
+      "name": "ЛОКО-Банк",
+      "registeredName": "КБ \"ЛОКО-Банк\" (АО)"
+    },
+    {
+      "registrationNumber": "3379",
+      "name": "Максима",
+      "registeredName": "КБ \"Максима\" (ООО)"
+    },
+    {
+      "registrationNumber": "3396",
+      "name": "МБ Банк",
+      "registeredName": "АО \"МБ Банк\""
+    },
+    {
+      "registrationNumber": "3473",
+      "name": "МБ РУС Банк",
+      "registeredName": "ООО \"МБ РУС Банк\""
+    },
+    {
+      "registrationNumber": "2407",
+      "name": "МВС Банк",
+      "registeredName": "ООО КБ \"МВС Банк\""
+    },
+    {
+      "registrationNumber": "2618",
+      "name": "МЕЖДУНАРОДНЫЙ ФИНАНСОВЫЙ КЛУБ",
+      "registeredName": "АО АКБ \"МЕЖДУНАРОДНЫЙ ФИНАНСОВЫЙ КЛУБ\""
+    },
+    {
+      "registrationNumber": "2440",
+      "name": "Металлинвестбанк",
+      "registeredName": "ПАО АКБ \"Металлинвестбанк\""
+    },
+    {
+      "registrationNumber": "2443",
+      "name": "МЕТКОМБАНК",
+      "registeredName": "ПАО \"МЕТКОМБАНК\""
+    },
+    {
+      "registrationNumber": "3337",
+      "name": "Мидзухо Банк (Москва)",
+      "registeredName": "АО \"Мидзухо Банк (Москва)\""
+    },
+    {
+      "registrationNumber": "1818",
+      "name": "МКБ Дон-Тексбанк",
+      "registeredName": "МКБ \"Дон-Тексбанк\" ООО"
+    },
+    {
+      "registrationNumber": "3257",
+      "name": "МКИБ РОССИТА-БАНК",
+      "registeredName": "МКИБ \"РОССИТА-БАНК\" ООО"
+    },
+    {
+      "registrationNumber": "1927",
+      "name": "Модульбанк",
+      "registeredName": "АО КБ \"Модульбанк\""
+    },
+    {
+      "registrationNumber": "77",
+      "name": "МОРСКОЙ БАНК",
+      "registeredName": "МОРСКОЙ БАНК (АО)"
+    },
+    {
+      "registrationNumber": "1978",
+      "name": "МОСКОВСКИЙ КРЕДИТНЫЙ БАНК",
+      "registeredName": "ПАО \"МОСКОВСКИЙ КРЕДИТНЫЙ БАНК\""
+    },
+    {
+      "registrationNumber": "3172",
+      "name": "МОСКОМБАНК",
+      "registeredName": "АО \"МОСКОМБАНК\""
+    },
+    {
+      "registrationNumber": "3365",
+      "name": "Москоммерцбанк",
+      "registeredName": "КБ \"Москоммерцбанк\" (АО)"
+    },
+    {
+      "registrationNumber": "2402",
+      "name": "МОСНАРБАНК",
+      "registeredName": "АО АКБ «МОСНАРБАНК»"
+    },
+    {
+      "registrationNumber": "1751",
+      "name": "МОСОБЛБАНК",
+      "registeredName": "АО МОСОБЛБАНК"
+    },
+    {
+      "registrationNumber": "3224",
+      "name": "МП Банк",
+      "registeredName": "МП Банк (ООО)"
+    },
+    {
+      "registrationNumber": "2789",
+      "name": "МС Банк Рус",
+      "registeredName": "АО МС Банк Рус"
+    },
+    {
+      "registrationNumber": "3340",
+      "name": "МСП Банк",
+      "registeredName": "АО \"МСП Банк\""
+    },
+    {
+      "registrationNumber": "2268",
+      "name": "МТС-Банк",
+      "registeredName": "ПАО \"МТС-Банк\""
+    },
+    {
+      "registrationNumber": "3341",
+      "name": "Мурманский расчетный Банк",
+      "registeredName": "ООО \"Мурманский расчетный Банк\""
+    },
+    {
+      "registrationNumber": "3077",
+      "name": "Нацинвестпромбанк",
+      "registeredName": "\"Нацинвестпромбанк\" (АО)"
+    },
+    {
+      "registrationNumber": "1966",
+      "name": "НБД-Банк",
+      "registeredName": "ПАО \"НБД-Банк\""
+    },
+    {
+      "registrationNumber": "2374",
+      "name": "НДБанк",
+      "registeredName": "АО \"НДБанк\""
+    },
+    {
+      "registrationNumber": "2876",
+      "name": "НИБ",
+      "registeredName": "АО КБ \"НИБ\""
+    },
+    {
+      "registrationNumber": "702",
+      "name": "НИКО-БАНК",
+      "registeredName": "ПАО \"НИКО-БАНК\""
+    },
+    {
+      "registrationNumber": "2755",
+      "name": "НК Банк",
+      "registeredName": "АО \"НК Банк\""
+    },
+    {
+      "registrationNumber": "804",
+      "name": "НКБ СЛАВЯНБАНК",
+      "registeredName": "АО НКБ \"СЛАВЯНБАНК\""
+    },
+    {
+      "registrationNumber": "2546",
+      "name": "НОВИКОМБАНК",
+      "registeredName": "АО АКБ \"НОВИКОМБАНК\""
+    },
+    {
+      "registrationNumber": "1747",
+      "name": "НОВОКИБ",
+      "registeredName": "ООО \"НОВОКИБ\""
+    },
+    {
+      "registrationNumber": "3417",
+      "name": "Новый век",
+      "registeredName": "КБ \"Новый век\" (ООО)"
+    },
+    {
+      "registrationNumber": "3202",
+      "name": "НОКССБАНК",
+      "registeredName": "АО НОКССБАНК"
+    },
+    {
+      "registrationNumber": "2650",
+      "name": "НООСФЕРА",
+      "registeredName": "АКБ \"НООСФЕРА\" (АО)"
+    },
+    {
+      "registrationNumber": "902",
+      "name": "Норвик Банк",
+      "registeredName": "ПАО \"Норвик Банк\""
+    },
+    {
+      "registrationNumber": "2170",
+      "name": "НРБанк",
+      "registeredName": "АКБ \"НРБанк\" (АО)"
+    },
+    {
+      "registrationNumber": "3124",
+      "name": "НС Банк",
+      "registeredName": "АО \"НС Банк\""
+    },
+    {
+      "registrationNumber": "3542",
+      "name": "ОЗОН Банк",
+      "registeredName": "ООО \"ОЗОН Банк\""
+    },
+    {
+      "registrationNumber": "3490",
+      "name": "Ориджин Банк",
+      "registeredName": "ООО \"Ориджин Банк\""
+    },
+    {
+      "registrationNumber": "2766",
+      "name": "ОТП Банк",
+      "registeredName": "АО \"ОТП Банк\""
+    },
+    {
+      "registrationNumber": "965",
+      "name": "ПЕРВОУРАЛЬСКБАНК",
+      "registeredName": "АО \"ПЕРВОУРАЛЬСКБАНК\""
+    },
+    {
+      "registrationNumber": "3271",
+      "name": "Первый Дортрансбанк",
+      "registeredName": "АО \"Первый Дортрансбанк\""
+    },
+    {
+      "registrationNumber": "604",
+      "name": "Первый Инвестиционный Банк",
+      "registeredName": "АО \"Первый Инвестиционный Банк\""
+    },
+    {
+      "registrationNumber": "3436",
+      "name": "Первый Клиентский Банк",
+      "registeredName": "ООО \"Первый Клиентский Банк\""
+    },
+    {
+      "registrationNumber": "2110",
+      "name": "ПЕРЕСВЕТ",
+      "registeredName": "АКБ \"ПЕРЕСВЕТ\" (ПАО)"
+    },
+    {
+      "registrationNumber": "3500",
+      "name": "Пихта Банк",
+      "registeredName": "ООО \"Пихта Банк\""
+    },
+    {
+      "registrationNumber": "2534",
+      "name": "Пойдём!",
+      "registeredName": "АО КБ \"Пойдём!\""
+    },
+    {
+      "registrationNumber": "3001",
+      "name": "Приморье",
+      "registeredName": "ПАО АКБ \"Приморье\""
+    },
+    {
+      "registrationNumber": "21",
+      "name": "Примтеркомбанк",
+      "registeredName": "ООО \"Примтеркомбанк\""
+    },
+    {
+      "registrationNumber": "212",
+      "name": "Прио-Внешторгбанк",
+      "registeredName": "Прио-Внешторгбанк (ПАО)"
+    },
+    {
+      "registrationNumber": "537",
+      "name": "Приобье",
+      "registeredName": "АО КБ \"Приобье\""
+    },
+    {
+      "registrationNumber": "3296",
+      "name": "ПроБанк",
+      "registeredName": "АО \"ПроБанк\""
+    },
+    {
+      "registrationNumber": "2996",
+      "name": "ПроКоммерцБанк",
+      "registeredName": "ООО \"ПроКоммерцБанк\""
+    },
+    {
+      "registrationNumber": "538",
+      "name": "Промсельхозбанк",
+      "registeredName": "ООО \"Промсельхозбанк\""
+    },
+    {
+      "registrationNumber": "3292",
+      "name": "Райффайзенбанк",
+      "registeredName": "АО \"Райффайзенбанк\""
+    },
+    {
+      "registrationNumber": "3413",
+      "name": "РБА",
+      "registeredName": "КБ \"РБА\" (ООО)"
+    },
+    {
+      "registrationNumber": "1067",
+      "name": "РЕАЛИСТ БАНК",
+      "registeredName": "АО \"РЕАЛИСТ БАНК\""
+    },
+    {
+      "registrationNumber": "3575",
+      "name": "РЕЗОРТ БАНК",
+      "registeredName": "ООО \"РЕЗОРТ БАНК\""
+    },
+    {
+      "registrationNumber": "3354",
+      "name": "Ренессанс Кредит",
+      "registeredName": "КБ \"Ренессанс Кредит\" (ООО)"
+    },
+    {
+      "registrationNumber": "2557",
+      "name": "РенКап Банк",
+      "registeredName": "АО \"РенКап Банк\""
+    },
+    {
+      "registrationNumber": "3017",
+      "name": "Республиканский Кредитный Альянс",
+      "registeredName": "\"Республиканский Кредитный Альянс\" ООО"
+    },
+    {
+      "registrationNumber": "1573",
+      "name": "РосДорБанк",
+      "registeredName": "ПАО \"РосДорБанк\""
+    },
+    {
+      "registrationNumber": "3349",
+      "name": "Россельхозбанк",
+      "registeredName": "АО \"Россельхозбанк\""
+    },
+    {
+      "registrationNumber": "481",
+      "name": "РостФинанс",
+      "registeredName": "ООО КБ \"РостФинанс\""
+    },
+    {
+      "registrationNumber": "2790",
+      "name": "РОСЭКСИМБАНК",
+      "registeredName": "АО РОСЭКСИМБАНК"
+    },
+    {
+      "registrationNumber": "783",
+      "name": "Роял Кредит Банк",
+      "registeredName": "АО \"Роял Кредит Банк\""
+    },
+    {
+      "registrationNumber": "779",
+      "name": "РУСБС",
+      "registeredName": "ООО \"РУСБС\""
+    },
+    {
+      "registrationNumber": "3403",
+      "name": "РУСНАРБАНК",
+      "registeredName": "АО КБ \"РУСНАРБАНК\""
+    },
+    {
+      "registrationNumber": "685",
+      "name": "РусьРегионБанк",
+      "registeredName": "ПАО КБ \"РусьРегионБанк\""
+    },
+    {
+      "registrationNumber": "3293",
+      "name": "Русьуниверсалбанк",
+      "registeredName": "\"Русьуниверсалбанк\" (ООО)"
+    },
+    {
+      "registrationNumber": "3099",
+      "name": "РФК-банк",
+      "registeredName": "АО \"РФК-банк\""
+    },
+    {
+      "registrationNumber": "85",
+      "name": "САММИТ БАНК",
+      "registeredName": "АО КБ \"САММИТ БАНК\""
+    },
+    {
+      "registrationNumber": "3468",
+      "name": "Санкт-Петербургский банк инвестиций",
+      "registeredName": "Санкт-Петербургский банк инвестиций (АО)"
+    },
+    {
+      "registrationNumber": "1481",
+      "name": "Сбербанк",
+      "registeredName": "ПАО Сбербанк"
+    },
+    {
+      "registrationNumber": "3223",
+      "name": "Свой Банк",
+      "registeredName": "АО \"Свой Банк\""
+    },
+    {
+      "registrationNumber": "1637",
+      "name": "СДМ-Банк",
+      "registeredName": "\"СДМ-Банк\" (ПАО)"
+    },
+    {
+      "registrationNumber": "2721",
+      "name": "Северный Народный Банк",
+      "registeredName": "\"Северный Народный Банк\" (АО)"
+    },
+    {
+      "registrationNumber": "3507",
+      "name": "СеверСтройБанк",
+      "registeredName": "\"СеверСтройБанк\" АО"
+    },
+    {
+      "registrationNumber": "106",
+      "name": "Сельмашбанк",
+      "registeredName": "ПАО КБ \"Сельмашбанк\""
+    },
+    {
+      "registrationNumber": "2015",
+      "name": "СИБСОЦБАНК",
+      "registeredName": "\"СИБСОЦБАНК\" ООО"
+    },
+    {
+      "registrationNumber": "2838",
+      "name": "СИНКО-БАНК",
+      "registeredName": "ООО КБ \"СИНКО-БАНК\""
+    },
+    {
+      "registrationNumber": "3194",
+      "name": "Сити Инвест Банк",
+      "registeredName": "АО \"Сити Инвест Банк\""
+    },
+    {
+      "registrationNumber": "2733",
+      "name": "СКБ Приморья Примсоцбанк",
+      "registeredName": "ПАО СКБ Приморья \"Примсоцбанк\""
+    },
+    {
+      "registrationNumber": "2664",
+      "name": "СЛАВИЯ",
+      "registeredName": "АКБ \"СЛАВИЯ\" (АО)"
+    },
+    {
+      "registrationNumber": "3494",
+      "name": "СМБСР Банк",
+      "registeredName": "АО \"СМБСР Банк\""
+    },
+    {
+      "registrationNumber": "2846",
+      "name": "СМЛТ Банк",
+      "registeredName": "ООО \"СМЛТ Банк\""
+    },
+    {
+      "registrationNumber": "963",
+      "name": "Совкомбанк",
+      "registeredName": "ПАО \"Совкомбанк\""
+    },
+    {
+      "registrationNumber": "2830",
+      "name": "Соколовский",
+      "registeredName": "АО КБ \"Соколовский\""
+    },
+    {
+      "registrationNumber": "1329",
+      "name": "Солид Банк",
+      "registeredName": "АО \"Солид Банк\""
+    },
+    {
+      "registrationNumber": "554",
+      "name": "Солидарность",
+      "registeredName": "АО КБ \"Солидарность\""
+    },
+    {
+      "registrationNumber": "2881",
+      "name": "СОЦИУМ-БАНК",
+      "registeredName": "\"СОЦИУМ-БАНК\" (ООО)"
+    },
+    {
+      "registrationNumber": "435",
+      "name": "СПБ Банк",
+      "registeredName": "АО \"СПБ Банк\""
+    },
+    {
+      "registrationNumber": "236",
+      "name": "СПЕЦСТРОЙБАНК",
+      "registeredName": "ООО \"СПЕЦСТРОЙБАНК\""
+    },
+    {
+      "registrationNumber": "2853",
+      "name": "Столичный Кредит",
+      "registeredName": "ООО КБ \"Столичный Кредит\""
+    },
+    {
+      "registrationNumber": "2995",
+      "name": "СТРОЙЛЕСБАНК",
+      "registeredName": "КБ \"СТРОЙЛЕСБАНК\" (ООО)"
+    },
+    {
+      "registrationNumber": "3235",
+      "name": "СЭБ Банк",
+      "registeredName": "АО \"СЭБ Банк\""
+    },
+    {
+      "registrationNumber": "3136",
+      "name": "Таганрогбанк",
+      "registeredName": "АО \"Таганрогбанк\""
+    },
+    {
+      "registrationNumber": "480",
+      "name": "ТАТСОЦБАНК",
+      "registeredName": "АО \"ТАТСОЦБАНК\""
+    },
+    {
+      "registrationNumber": "2673",
+      "name": "ТБанк",
+      "registeredName": "АО \"ТБанк\""
+    },
+    {
+      "registrationNumber": "1052",
+      "name": "ТелеПорт Банк",
+      "registeredName": "АО «ТелеПорт Банк»"
+    },
+    {
+      "registrationNumber": "2252",
+      "name": "ТЕНДЕР-БАНК",
+      "registeredName": "АКБ \"ТЕНДЕР-БАНК\" (АО)"
+    },
+    {
+      "registrationNumber": "1581",
+      "name": "Тимер Банк",
+      "registeredName": "АО \"Тимер Банк\""
+    },
+    {
+      "registrationNumber": "2210",
+      "name": "ТКБ БАНК",
+      "registeredName": "ТКБ БАНК ПАО"
+    },
+    {
+      "registrationNumber": "3470",
+      "name": "Тойота Банк",
+      "registeredName": "АО \"Тойота Банк\""
+    },
+    {
+      "registrationNumber": "2507",
+      "name": "Тольяттихимбанк",
+      "registeredName": "АО \"Тольяттихимбанк\""
+    },
+    {
+      "registrationNumber": "1720",
+      "name": "Томскпромстройбанк",
+      "registeredName": "ПАО \"Томскпромстройбанк\""
+    },
+    {
+      "registrationNumber": "2807",
+      "name": "Трансстройбанк",
+      "registeredName": "АКБ \"Трансстройбанк\" (АО)"
+    },
+    {
+      "registrationNumber": "429",
+      "name": "УБРиР",
+      "registeredName": "ПАО КБ \"УБРиР\""
+    },
+    {
+      "registrationNumber": "2997",
+      "name": "Углеметбанк",
+      "registeredName": "АО \"Углеметбанк\""
+    },
+    {
+      "registrationNumber": "760",
+      "name": "УКБ Белгородсоцбанк",
+      "registeredName": "АО УКБ \"Белгородсоцбанк\""
+    },
+    {
+      "registrationNumber": "1352",
+      "name": "УКБ Новобанк",
+      "registeredName": "ПАО УКБ \"Новобанк\""
+    },
+    {
+      "registrationNumber": "3416",
+      "name": "Унифондбанк",
+      "registeredName": "ООО \"Унифондбанк\""
+    },
+    {
+      "registrationNumber": "249",
+      "name": "Урал ФД",
+      "registeredName": "АО КБ \"Урал ФД\""
+    },
+    {
+      "registrationNumber": "2964",
+      "name": "УРАЛПРОМБАНК",
+      "registeredName": "АО \"УРАЛПРОМБАНК\""
+    },
+    {
+      "registrationNumber": "1370",
+      "name": "Уралфинанс",
+      "registeredName": "ООО КБ \"Уралфинанс\""
+    },
+    {
+      "registrationNumber": "3479",
+      "name": "Ури Банк",
+      "registeredName": "АО \"Ури Банк\""
+    },
+    {
+      "registrationNumber": "3557",
+      "name": "Финансовый ландшафт",
+      "registeredName": "АО КБ \"Финансовый ландшафт\""
+    },
+    {
+      "registrationNumber": "3245",
+      "name": "ФИНСТАР БАНК",
+      "registeredName": "ПАО ФИНСТАР БАНК"
+    },
+    {
+      "registrationNumber": "1885",
+      "name": "ФОРА-БАНК",
+      "registeredName": "АКБ \"ФОРА-БАНК\" (АО)"
+    },
+    {
+      "registrationNumber": "2208",
+      "name": "Форштадт",
+      "registeredName": "АКБ \"Форштадт\" (АО)"
+    },
+    {
+      "registrationNumber": "1049",
+      "name": "Хакасский муниципальный банк",
+      "registeredName": "ООО \"Хакасский муниципальный банк\""
+    },
+    {
+      "registrationNumber": "254",
+      "name": "Хлынов",
+      "registeredName": "АО КБ \"Хлынов\""
+    },
+    {
+      "registrationNumber": "2225",
+      "name": "Центр-инвест",
+      "registeredName": "ПАО КБ \"Центр-инвест\""
+    },
+    {
+      "registrationNumber": "121",
+      "name": "ЦентроКредит",
+      "registeredName": "АО АКБ \"ЦентроКредит\""
+    },
+    {
+      "registrationNumber": "1143",
+      "name": "Цифра банк",
+      "registeredName": "ООО \"Цифра банк\""
+    },
+    {
+      "registrationNumber": "3531",
+      "name": "ЦМРБанк",
+      "registeredName": "ЦМРБанк (ООО)"
+    },
+    {
+      "registrationNumber": "3515",
+      "name": "Чайна Констракшн Банк",
+      "registeredName": "ООО \"Чайна Констракшн Банк\""
+    },
+    {
+      "registrationNumber": "3529",
+      "name": "Чайнасельхозбанк",
+      "registeredName": "ООО \"Чайнасельхозбанк\""
+    },
+    {
+      "registrationNumber": "485",
+      "name": "ЧЕЛИНДБАНК",
+      "registeredName": "ПАО \"ЧЕЛИНДБАНК\""
+    },
+    {
+      "registrationNumber": "493",
+      "name": "ЧЕЛЯБИНВЕСТБАНК",
+      "registeredName": "ПАО \"ЧЕЛЯБИНВЕСТБАНК\""
+    },
+    {
+      "registrationNumber": "3116",
+      "name": "ЭКО-ИНВЕСТ",
+      "registeredName": "ООО КБ \"ЭКО-ИНВЕСТ\""
+    },
+    {
+      "registrationNumber": "1319",
+      "name": "Экономбанк",
+      "registeredName": "АО \"Экономбанк\""
+    },
+    {
+      "registrationNumber": "2530",
+      "name": "ЭКСИ-Банк",
+      "registeredName": "ЭКСИ-Банк (АО)"
+    },
+    {
+      "registrationNumber": "2998",
+      "name": "Экспобанк",
+      "registeredName": "АО \"Экспобанк\""
+    },
+    {
+      "registrationNumber": "3465",
+      "name": "Эм-Ю-Эф-Джи Банк (Евразия)",
+      "registeredName": "АО \"Эм-Ю-Эф-Джи Банк (Евразия)\""
+    },
+    {
+      "registrationNumber": "67",
+      "name": "Энергобанк",
+      "registeredName": "АКБ \"Энергобанк\" (АО)"
+    },
+    {
+      "registrationNumber": "1307",
+      "name": "ЭНЕРГОТРАНСБАНК",
+      "registeredName": "КБ \"ЭНЕРГОТРАНСБАНК\" (АО)"
+    },
+    {
+      "registrationNumber": "3185",
+      "name": "Эс-Би-Ай Банк",
+      "registeredName": "Эс-Би-Ай Банк ООО"
+    },
+    {
+      "registrationNumber": "3463",
+      "name": "Ю Би Эс Банк",
+      "registeredName": "ООО \"Ю Би Эс Банк\""
+    },
+    {
+      "registrationNumber": "2772",
+      "name": "ЮГ-Инвестбанк",
+      "registeredName": "ЮГ-Инвестбанк (ПАО)"
+    },
+    {
+      "registrationNumber": "1",
+      "name": "ЮниКредит Банк",
+      "registeredName": "АО ЮниКредит Банк"
+    },
+    {
+      "registrationNumber": "3467",
+      "name": "ЮНИСТРИМ",
+      "registeredName": "АО КБ \"ЮНИСТРИМ\""
+    },
+    {
+      "registrationNumber": "3027",
+      "name": "Яндекс Банк",
+      "registeredName": "АО \"Яндекс Банк\""
+    }
+  ]
+}

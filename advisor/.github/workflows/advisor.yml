@@ -1,0 +1,83 @@
+name: Advisor CI/CD
+
+on:
+  push:
+    branches-ignore:
+      - deploy/staging
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: advisor-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Test application and check deployment scripts
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip check
+          python -m unittest -v
+          bash -n deploy/install.sh
+          bash -n deploy/update.sh
+      - name: Install browser for defense scenario
+        run: |
+          python -m pip install playwright==1.58.0
+          python -m playwright install --with-deps chromium
+      - name: Run the defense purchase scenario against a release archive
+        run: |
+          release=$(mktemp -d)
+          git archive "$GITHUB_SHA" | tar -x -C "$release"
+          cd "$release"
+          export ADVISOR_DB="$release/ci.sqlite3"
+          python - <<'PY'
+          import os
+          from catalog import SEED, import_catalog
+
+          import_catalog(os.environ["ADVISOR_DB"], [
+              dict(rule, validFrom="2000-01-01", validUntilExclusive="2100-01-01", updatedOn="2000-01-01")
+              for rule in SEED
+          ])
+          PY
+          python -m uvicorn advisor:app --host 127.0.0.1 --port 8766 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true; rm -rf -- "$release"' EXIT
+          for attempt in $(seq 1 15); do
+            if python deploy/smoke.py http://127.0.0.1:8766 --revision "$GITHUB_SHA"; then
+              python tests/browser_mvp.py http://127.0.0.1:8766
+              exit 0
+            fi
+            sleep 1
+          done
+          exit 1
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Publish the tested revision for the staging VM
+        run: |
+          latest=$(git ls-remote --exit-code origin refs/heads/main | cut -f1)
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo "A newer revision is on main."
+            exit 0
+          fi
+          git push origin "$GITHUB_SHA:refs/heads/deploy/staging"

@@ -1,0 +1,99 @@
+/* Onest Variable, SIL OFL. Atlas palette + unified tokens. */
+@font-face {
+  font-family: Onest;
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/static/fonts/onest-cyrillic.woff2") format("woff2");
+  /* Cyrillic + ё (U+0451); amounts use U+20BD from latin-ext file */
+  unicode-range: U+0301, U+0400-045F, U+0451, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: Onest;
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/static/fonts/onest-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Onest;
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/static/fonts/onest-latin-ext.woff2") format("woff2");
+  /* U+20BD ₽ and currency symbols */
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --bg: #f7f4ec;
+  --paper: #f7f4ec;
+  --sheet: #fffcf6;
+  --surface: #fffcf6;
+  --ink: #171817;
+  --quiet: #5d5a51;
+  --muted: #5d5a51;
+  --line: #ded9cb;
+  --accent: #ffdd2d;
+  --accent-ink: #1d1e1a;
+  --yellow: #ffdd2d;
+  --sun: #ffdd2d;
+  --graphite: #171817;
+  --graphite-ink: #fffcf6;
+  --card: #171817;
+  --danger: #a22624;
+  --red: #a22624;
+  --green: #285a3a;
+  --shadow: 0 14px 36px rgba(23, 24, 23, .12);
+  --ease: cubic-bezier(.2, 0, 0, 1);
+  --fan-ease: cubic-bezier(.2, 0, 0, 1);
+  --fast: 220ms;
+  --sheet-ms: 320ms;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --radius-sm: 8px;
+  --radius-md: 13px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --touch: 44px;
+  --font-ui: Onest, system-ui, sans-serif;
+  --control-radius: var(--radius-md);
+  --control-border: color-mix(in srgb, var(--line) 55%, var(--quiet));
+  --focus-ring: #116eb4;
+  --control-ease: 140ms var(--ease);
+  color-scheme: light;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--font-ui);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #151613;
+  --paper: #151613;
+  --sheet: #22231f;
+  --surface: #22231f;
+  --ink: #f5f3ea;
+  --quiet: #b7b3a8;
+  --muted: #b7b3a8;
+  --line: #34352f;
+  --graphite: #0e0f0c;
+  --graphite-ink: #f5f3ea;
+  --card: #0e0f0c;
+  --danger: #ff8f8a;
+  --red: #ff8f8a;
+  --focus-ring: var(--accent);
+  --shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+html, body, button, input, select, textarea {
+  font-family: var(--font-ui);
+}
+
+.money, .tabular, .journal-money, .stat-primary strong, .carousel-position, .buy-amount, .advice-value {
+  font-variant-numeric: tabular-nums;
+}

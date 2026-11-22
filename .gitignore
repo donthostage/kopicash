@@ -1,0 +1,21 @@
+# Local data and secrets
+.env*
+.advisor-api-key
+*.sqlite3*
+*.pem
+*.key
+.venv/
+__pycache__/
+*.log
+/outputs/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,9 @@
+[Unit]
+Description=Deploy the tested Advisor revision
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/advisor/bin/update
+TimeoutStartSec=10min

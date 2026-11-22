@@ -1,0 +1,10 @@
+.git
+.env*
+.advisor-api-key
+**/.env*
+*.sqlite3*
+*.db*
+*.pem
+*.key
+__pycache__
+.venv

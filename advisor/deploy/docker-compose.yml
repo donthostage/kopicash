@@ -1,0 +1,20 @@
+services:
+  advisor:
+    image: '${ADVISOR_IMAGE:?set image}'
+    user: '${ADVISOR_UID:?set UID}:${ADVISOR_GID:?set GID}'
+    restart: unless-stopped
+    env_file:
+      - /etc/advisor.env
+    environment:
+      ADVISOR_DB: /data/advisor.sqlite3
+      ADVISOR_API_KEY_FILE: /data/.advisor-api-key
+      ADVISOR_BUILD_REVISION: '${ADVISOR_REVISION:?set revision}'
+      # Backend is accessible only from the Compose network; frontend sets these headers.
+      FORWARDED_ALLOW_IPS: '*'
+    labels:
+      org.opencontainers.image.revision: '${ADVISOR_REVISION:?set revision}'
+    volumes:
+      - /var/lib/advisor:/data
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+# The companion Compose file publishes the frontend; the backend has no host port.

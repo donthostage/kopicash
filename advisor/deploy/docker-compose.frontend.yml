@@ -1,0 +1,9 @@
+services:
+  frontend:
+    image: '${ADVISOR_FRONTEND_IMAGE:?set frontend image}'
+    depends_on: [advisor]
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8766:8080'
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']

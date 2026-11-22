@@ -1,0 +1,75 @@
+#buyPanel{--stroke:var(--control-border);color:var(--ink);padding-block-end:max(24px,env(safe-area-inset-bottom));overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#buyPanel h2{font-size:clamp(32px,5vw,48px);letter-spacing:-.045em;line-height:1.1;margin:8px 0 20px}
+#buyPanel h3{font-size:20px;margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
+.buy-note{color:var(--quiet);font-size:14px;line-height:1.45}
+#buyPanel h2{margin-top:4px}
+.buy-body{display:grid;gap:24px;align-items:start}.buy-inputs,.buy-advice{min-width:0}
+#categoryGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#categoryGrid .tile,#changeCategory{background:var(--sheet);border:1px solid var(--stroke);border-radius:14px;color:var(--ink);display:flex;gap:8px;align-items:center;min-height:60px;min-width:0;padding:10px;font-family:inherit;font-size:15px;font-weight:600;line-height:1.25;text-align:left;overflow-wrap:anywhere;word-break:normal;hyphens:manual;transition:transform 120ms ease-out}
+#categoryGrid .tile span{min-width:0}
+@media (max-width:390px){
+  #categoryGrid .tile.tile-wide{grid-column:1/-1}
+}
+#categoryGrid .tile:active{transform:scale(.98)}
+#categoryGrid .tile[aria-pressed=true] span::after{content:" · выбрано";font-weight:500}
+#categoryGrid .tile[aria-pressed=true],#changeCategory{background:var(--graphite);border-color:var(--stroke);color:#fff}
+#categoryGrid svg,#changeCategory svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.6;width:24px;height:24px;flex:none}
+#categoryGrid .tile[aria-pressed=true] svg,#changeCategory svg{color:var(--accent)}
+#categoryGrid .tile[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--accent)}
+#changeCategory{width:100%}#changeCategory span{margin-left:auto;font-size:14px;text-decoration:underline}#categoryGrid:not([hidden]){margin-block:8px}
+#buyPanel .buy-label{margin:20px 0 8px;color:var(--ink)}.amount-wrap{position:relative}#buyPanel .buy-amount{background:var(--sheet);color:var(--ink);border:1px solid var(--stroke);padding-inline-end:48px;font-weight:600;font-variant-numeric:tabular-nums}#buyAmount::placeholder{color:var(--quiet);font-size:18px}#clearAmount{position:absolute;inset:4px 4px 4px auto;width:44px;background:transparent;color:var(--ink);font-size:24px}
+.buy-advice{min-height:184px}#buyStatus{color:var(--quiet);line-height:1.45;min-height:1.45em;margin:4px 0}.record-form select{padding:10px 14px;min-height:var(--touch);border-radius:var(--control-radius)}
+.record-form select{background:var(--sheet);color:var(--ink);border:1px solid var(--control-border)}
+#buyResults{display:grid;gap:8px;margin:12px 0}#buyResults h4{margin:0;font-size:17px}#buyResults p{margin:6px 0;line-height:1.45}#buyResults summary{cursor:pointer;padding:12px 0;min-height:44px;font-weight:600}
+#buyResults .advice-winner{background:var(--graphite);color:#fff;padding:20px;border-radius:18px;animation:advice-appear 200ms ease-out}#buyResults .advice-lead{margin:8px 0 0;font-size:16px;line-height:1.35;color:#e8e5dc}#buyResults .advice-winner .advice-lead .advice-value{color:var(--accent);font-size:clamp(28px,6vw,42px);letter-spacing:-.04em;display:inline;margin:0}#buyResults .advice-line{margin:4px 0 0;font-weight:600}#buyResults .advice-row .advice-value{display:none}#buyResults .advice-value{font-size:24px;line-height:1.1;display:block;margin:8px 0}#buyResults .advice-winner .advice-value:not(.advice-lead .advice-value){color:var(--accent);font-size:clamp(36px,7vw,54px);letter-spacing:-.045em}.advice-winner .buy-note{color:#d3d0c6}.advice-winner a{color:#ffc928}
+#buyResults .advice-row,.record-form{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:16px}.advice-cat{font-weight:600}#buyResults dl{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);font-size:14px;gap:8px;margin:4px 0}#buyResults dd{margin:0}#buyResults dt{opacity:.82}.record-form{display:grid;gap:8px}.record-form p{font-size:14px}.advice-winner{--focus-ring:var(--accent)}
+@keyframes advice-appear{from{opacity:0;transform:translateY(3px)}}@media(prefers-reduced-motion:reduce){#buyPanel *,#buyPanel *::before{animation:none!important;transition:none!important}}
+@media(min-width:800px){#appScreen.page:has(#buyPanel:not([hidden])){width:min(100%,1000px);padding:24px 40px}#appScreen:has(#buyPanel:not([hidden])) :is(.topbar,.content){width:100%}.buy-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}.buy-advice{border-left:1px solid var(--line);padding-left:28px}}
+
+.purchase-plan{margin-block-start:20px}
+.purchase-plan > summary {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; list-style: none; cursor: pointer;
+}
+.purchase-plan > summary::-webkit-details-marker { display: none; }
+.purchase-plan > summary::after {
+  content: ""; width: 8px; height: 8px; flex: 0 0 auto;
+  border: solid currentColor; border-width: 0 2px 2px 0;
+  transform: rotate(45deg); margin-inline-end: 3px;
+}
+.purchase-plan[open] > summary::after { transform: rotate(225deg); }
+.purchase-plan[open] > form { margin-block-start: 12px; }
+#purchasePlanForm,#purchasePlanRows{display:grid;gap:12px}
+.purchase-plan fieldset{min-width:0;display:grid;gap:8px;padding:10px 12px 12px;margin:0;border:1px solid var(--control-border);border-radius:var(--control-radius)}
+.purchase-plan legend{font-weight:600;padding-inline:4px}
+.purchase-plan label{display:grid;gap:4px}
+.purchase-plan :is(select,input){width:100%;min-width:0;min-height:44px;padding:8px;border:1px solid var(--control-border);border-radius:var(--control-radius);background:var(--sheet);color:var(--ink);font:inherit}
+.purchase-plan button:disabled{opacity:.55;cursor:default}
+.purchase-plan-actions{display:flex;flex-wrap:wrap;gap:8px}
+#purchasePlanStatus:empty,#purchasePlanResult:empty{display:none}
+#purchasePlanResult ol{padding-inline-start:22px;margin-bottom:0}
+#purchasePlanResult li{padding-block:6px;overflow-wrap:anywhere}
+#purchasePlanResult li span{display:block}
+.purchase-plan-gain{font-weight:700}
+
+/* Recommendation scope, shared with the existing wallet controls. */
+#buyPanel .buy-switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--sheet);
+}
+.buy-switch button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
