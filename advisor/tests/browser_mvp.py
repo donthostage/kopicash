@@ -317,6 +317,11 @@ def personal_scenario(page, base, directory):
     editor.get_by_role('button', name='Сохранить').click()
     expect(page.locator('#carouselCategories')).to_contain_text('Поездки')
     expect(page.locator('#carouselCategories')).not_to_contain_text('Изменить Транспорт')
+    page.locator('#previousCard').click()
+    expect(details).to_contain_text('Карта A')
+    settings.locator('summary').click()
+    baseline.click()
+    expect(baseline).to_have_attribute('aria-pressed', 'true')
     page.reload()
     expect(cards).to_be_visible()
     expect(page.locator('#carouselDetails')).to_contain_text(re.compile('Карта A|ВТБ'))
@@ -335,6 +340,11 @@ def personal_scenario(page, base, directory):
     amount.fill('2500')
     rank(page, [('Карта A', '100'), ('ВТБ', '25')])
     record_once(page, base, 'ВТБ')
+    history = page.locator('#historyPanel')
+    expect(history.locator('.journal-summary')).to_contain_text(re.compile(r'100(?:,00)?\s*₽'))
+    history.locator('.journal-row').first.click()
+    expect(history.locator('.journal-detail').first).to_contain_text(re.compile(r'Карта для сравнения: 100(?:,00)?\s*₽'))
+    expect(history.locator('.journal-detail').first).to_contain_text(re.compile(r'Выбранная карта: ВТБ, 25(?:,00)?\s*₽'))
     screenshots(page, directory, 'history')
 
 

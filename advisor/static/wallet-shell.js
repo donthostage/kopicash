@@ -598,6 +598,14 @@ function dayTitle(iso){
 }
 let journalRequest = 0;
 
+function comparisonNote(data){
+  if(data.usualKopecks==null) return null;
+  const note=document.createElement('p');
+  note.className='journal-meta';
+  note.textContent=`По карте для сравнения на момент покупок: ${money(data.usualKopecks)}.`;
+  return note;
+}
+
 async function renderHistory(){
   const ticket = ++journalRequest;
   const host=$('historyBody'); host.className='journal is-loading'; host.textContent='Загружаем историю…';
@@ -614,6 +622,8 @@ async function renderHistory(){
     const caption=document.createElement('span'); caption.textContent='Расчётный кэшбэк за месяц';
     total.append(caption, strong);
     summary.append(total);
+    const comparison=comparisonNote(data);
+    if(comparison) summary.append(comparison);
     const ask=document.createElement('button'); ask.type='button'; ask.className='buy-primary'; ask.textContent='Разбор за месяц';
     ask.onclick=async()=>{ask.disabled=true; ask.textContent='Разбираем…'; try{const reply=await api('/api/me/stats/comment?month='+encodeURIComponent(data.month),{method:'POST'},45000); const comment=document.createElement('p'); comment.textContent=reply.comment; summary.append(comment);}catch(error){toast(error.message);}finally{ask.disabled=false; ask.textContent='Разбор за месяц';}};
     summary.append(ask); host.append(summary);
@@ -643,6 +653,11 @@ async function renderHistory(){
         const best=document.createElement('p'); best.textContent=`Лучшая по расчёту: ${item.recommendedName||'—'}${item.recommendedKopecks==null?'':`, ${money(item.recommendedKopecks)}`}`;
         const diff=document.createElement('p'); diff.textContent=`Разница: ${item.recommendedKopecks==null||item.chosenKopecks==null?'—':money(gap)}`;
         detail.append(chosen, best, diff);
+        if(item.usualKopecks!=null){
+          const usual=document.createElement('p');
+          usual.textContent=`Карта для сравнения: ${money(item.usualKopecks)}`;
+          detail.append(usual);
+        }
         detail.id='purchase-detail-'+item.id;
         row.setAttribute('aria-controls', detail.id);
         row.onclick=()=>{detail.hidden=!detail.hidden; row.setAttribute('aria-expanded', String(!detail.hidden));};
@@ -726,6 +741,8 @@ async function renderAccount(){
     if(ticket!==profileRequest) return;
     const month=document.createElement('p'); month.className='profile-month'; month.textContent=monthTitle(data.month);
     host.replaceChildren(month,profileMetrics(data));
+    const comparison=comparisonNote(data);
+    if(comparison) host.append(comparison);
     if(data.purchases.length) host.append(spendingChart(data.purchases));
     const note=document.createElement('p'); note.className='journal-meta';
     note.textContent=!data.count?'За этот месяц покупок пока нет.':
